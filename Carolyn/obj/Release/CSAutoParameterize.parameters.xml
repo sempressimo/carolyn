@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="NutritionDBEntities-Web.config Connection String" description="NutritionDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/NutritionDBModel.csdl|res://*/NutritionDBModel.ssdl|res://*/NutritionDBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=(local);Initial Catalog=NutritionDB;User ID=sa;Password=q1w2e3r4;MultipleActiveResultSets=True&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\sempressimo\\Documents\\Visual\ Studio\ 2013\\Projects\\Carolyn\\Carolyn\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NutritionDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

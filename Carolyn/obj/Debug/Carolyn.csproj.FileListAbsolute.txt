@@ -1,0 +1,11 @@
+C:\Users\sempressimo\Documents\Visual Studio 2010\Projects\Carolyn\Carolyn\bin\Carolyn.dll
+C:\Users\sempressimo\Documents\Visual Studio 2010\Projects\Carolyn\Carolyn\bin\Carolyn.pdb
+C:\Users\sempressimo\Documents\Visual Studio 2010\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.dll
+C:\Users\sempressimo\Documents\Visual Studio 2010\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.pdb
+C:\Users\sempressimo\documents\visual studio 2010\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.csprojResolveAssemblyReference.cache
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\Carolyn.dll.config
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\Carolyn.dll
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\Carolyn.pdb
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.csprojResolveAssemblyReference.cache
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.dll
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.pdb

@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NutritionDBModelStoreContainer" CdmEntityContainer="NutritionDBEntities">
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="NutritionDBModel.Blogs">
+        <MappingFragment StoreEntitySet="Blogs">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Blog_Body" ColumnName="Blog_Body" />
+          <ScalarProperty Name="Blog_Author" ColumnName="Blog_Author" />
+          <ScalarProperty Name="Blog_Date" ColumnName="Blog_Date" />
+          <ScalarProperty Name="Blog_Title" ColumnName="Blog_Title" />
+          <ScalarProperty Name="Blog_ID" ColumnName="Blog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Initial_Assessment">
+      <EntityTypeMapping TypeName="NutritionDBModel.Initial_Assessment">
+        <MappingFragment StoreEntitySet="Initial_Assessment">
+          <ScalarProperty Name="TasteAndPreferences" ColumnName="TasteAndPreferences" />
+          <ScalarProperty Name="IBWP" ColumnName="IBWP" />
+          <ScalarProperty Name="UBWP" ColumnName="UBWP" />
+          <ScalarProperty Name="BMI" ColumnName="BMI" />
+          <ScalarProperty Name="IBW" ColumnName="IBW" />
+          <ScalarProperty Name="UBW" ColumnName="UBW" />
+          <ScalarProperty Name="ABW" ColumnName="ABW" />
+          <ScalarProperty Name="Bone_Structure" ColumnName="Bone_Structure" />
+          <ScalarProperty Name="Height_Centimeters" ColumnName="Height_Centimeters" />
+          <ScalarProperty Name="CurrentDiet" ColumnName="CurrentDiet" />
+          <ScalarProperty Name="SupplementsList" ColumnName="SupplementsList" />
+          <ScalarProperty Name="DrugsList" ColumnName="DrugsList" />
+          <ScalarProperty Name="ChangeInWeight" ColumnName="ChangeInWeight" />
+          <ScalarProperty Name="PhysicalActivity_Details" ColumnName="PhysicalActivity_Details" />
+          <ScalarProperty Name="PhysicalActivity" ColumnName="PhysicalActivity" />
+          <ScalarProperty Name="Barriers" ColumnName="Barriers" />
+          <ScalarProperty Name="LactoseIntolerance" ColumnName="LactoseIntolerance" />
+          <ScalarProperty Name="FoodAllergies" ColumnName="FoodAllergies" />
+          <ScalarProperty Name="ChangeInTaste" ColumnName="ChangeInTaste" />
+          <ScalarProperty Name="SwallowingProblems" ColumnName="SwallowingProblems" />
+          <ScalarProperty Name="ChewingProblems" ColumnName="ChewingProblems" />
+          <ScalarProperty Name="Constipation" ColumnName="Constipation" />
+          <ScalarProperty Name="Vomit" ColumnName="Vomit" />
+          <ScalarProperty Name="Diarrea" ColumnName="Diarrea" />
+          <ScalarProperty Name="Nausea" ColumnName="Nausea" />
+          <ScalarProperty Name="Apetite" ColumnName="Apetite" />
+          <ScalarProperty Name="Problems" ColumnName="Problems" />
+          <ScalarProperty Name="Initial_Assessment_ID" ColumnName="Initial_Assessment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabData">
+      <EntityTypeMapping TypeName="NutritionDBModel.LabData">
+        <MappingFragment StoreEntitySet="LabData">
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="ALKP" ColumnName="ALKP" />
+          <ScalarProperty Name="ALT" ColumnName="ALT" />
+          <ScalarProperty Name="AST" ColumnName="AST" />
+          <ScalarProperty Name="Sodium" ColumnName="Sodium" />
+          <ScalarProperty Name="Triglicerides" ColumnName="Triglicerides" />
+          <ScalarProperty Name="ColesterolHDL" ColumnName="ColesterolHDL" />
+          <ScalarProperty Name="ColesterolLDL" ColumnName="ColesterolLDL" />
+          <ScalarProperty Name="ColesterolTotal" ColumnName="ColesterolTotal" />
+          <ScalarProperty Name="Albumin" ColumnName="Albumin" />
+          <ScalarProperty Name="ProteinTotal" ColumnName="ProteinTotal" />
+          <ScalarProperty Name="Creatinine" ColumnName="Creatinine" />
+          <ScalarProperty Name="BUN" ColumnName="BUN" />
+          <ScalarProperty Name="Glucose" ColumnName="Glucose" />
+          <ScalarProperty Name="TLC" ColumnName="TLC" />
+          <ScalarProperty Name="MCHC" ColumnName="MCHC" />
+          <ScalarProperty Name="MCV" ColumnName="MCV" />
+          <ScalarProperty Name="HematocritP" ColumnName="HematocritP" />
+          <ScalarProperty Name="Hemoglobin" ColumnName="Hemoglobin" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="LabData_ID" ColumnName="LabData_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListZip">
+      <EntityTypeMapping TypeName="NutritionDBModel.ListZip">
+        <MappingFragment StoreEntitySet="ListZip">
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ZipUid" ColumnName="ZipUid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="NutritionDBModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="Posted_To" ColumnName="Posted_To" />
+          <ScalarProperty Name="Posted_By" ColumnName="Posted_By" />
+          <ScalarProperty Name="Message_Body" ColumnName="Message_Body" />
+          <ScalarProperty Name="Message_Date" ColumnName="Message_Date" />
+          <ScalarProperty Name="Message_ID" ColumnName="Message_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_Record_Assessment">
+      <EntityTypeMapping TypeName="NutritionDBModel.Patient_Record_Assessment">
+        <MappingFragment StoreEntitySet="Patient_Record_Assessment">
+          <ScalarProperty Name="Reason_For_Service" ColumnName="Reason_For_Service" />
+          <ScalarProperty Name="Power_Drinks_Per_Day" ColumnName="Power_Drinks_Per_Day" />
+          <ScalarProperty Name="Licor_Per_Day" ColumnName="Licor_Per_Day" />
+          <ScalarProperty Name="Tea_Sugar_Per_Day" ColumnName="Tea_Sugar_Per_Day" />
+          <ScalarProperty Name="Wine_Per_Day" ColumnName="Wine_Per_Day" />
+          <ScalarProperty Name="Tea_Per_Day" ColumnName="Tea_Per_Day" />
+          <ScalarProperty Name="Beer_Per_Day" ColumnName="Beer_Per_Day" />
+          <ScalarProperty Name="Diet_Soda_Per_Day" ColumnName="Diet_Soda_Per_Day" />
+          <ScalarProperty Name="Soda_Per_Day" ColumnName="Soda_Per_Day" />
+          <ScalarProperty Name="Milk_No_Fat_Per_Day" ColumnName="Milk_No_Fat_Per_Day" />
+          <ScalarProperty Name="Juice_Per_Day" ColumnName="Juice_Per_Day" />
+          <ScalarProperty Name="Milk_Low_Fat_Per_Day" ColumnName="Milk_Low_Fat_Per_Day" />
+          <ScalarProperty Name="Milk_Whole_Per_Day" ColumnName="Milk_Whole_Per_Day" />
+          <ScalarProperty Name="Water_Per_Day" ColumnName="Water_Per_Day" />
+          <ScalarProperty Name="Seafood_Per_Day" ColumnName="Seafood_Per_Day" />
+          <ScalarProperty Name="Red_Meat_Per_Day" ColumnName="Red_Meat_Per_Day" />
+          <ScalarProperty Name="Fish_Per_Day" ColumnName="Fish_Per_Day" />
+          <ScalarProperty Name="Poultry_Per_Day" ColumnName="Poultry_Per_Day" />
+          <ScalarProperty Name="Vegetables_Per_Day" ColumnName="Vegetables_Per_Day" />
+          <ScalarProperty Name="Fruit_Juice_Per_Day" ColumnName="Fruit_Juice_Per_Day" />
+          <ScalarProperty Name="Fruits_Per_Day" ColumnName="Fruits_Per_Day" />
+          <ScalarProperty Name="Eat_Outside_Place_Other" ColumnName="Eat_Outside_Place_Other" />
+          <ScalarProperty Name="Eat_Outside_Place" ColumnName="Eat_Outside_Place" />
+          <ScalarProperty Name="Eat_Outside_Dinner_Count" ColumnName="Eat_Outside_Dinner_Count" />
+          <ScalarProperty Name="Eat_Outside_Lunch_Count" ColumnName="Eat_Outside_Lunch_Count" />
+          <ScalarProperty Name="Eat_Outside_Breakfast_Count" ColumnName="Eat_Outside_Breakfast_Count" />
+          <ScalarProperty Name="Snacks_Per_Day" ColumnName="Snacks_Per_Day" />
+          <ScalarProperty Name="Meals_Per_Day" ColumnName="Meals_Per_Day" />
+          <ScalarProperty Name="Fx_Other_Description" ColumnName="Fx_Other_Description" />
+          <ScalarProperty Name="Fx_Other" ColumnName="Fx_Other" />
+          <ScalarProperty Name="Fx_Hipotension" ColumnName="Fx_Hipotension" />
+          <ScalarProperty Name="Fx_Vertigo" ColumnName="Fx_Vertigo" />
+          <ScalarProperty Name="Fx_Hipoglucemia" ColumnName="Fx_Hipoglucemia" />
+          <ScalarProperty Name="Fx_Tiroide" ColumnName="Fx_Tiroide" />
+          <ScalarProperty Name="Fx_Hipertension" ColumnName="Fx_Hipertension" />
+          <ScalarProperty Name="Fx_Migrane" ColumnName="Fx_Migrane" />
+          <ScalarProperty Name="Fx_Hiperlipidemias" ColumnName="Fx_Hiperlipidemias" />
+          <ScalarProperty Name="Fx_Mareos" ColumnName="Fx_Mareos" />
+          <ScalarProperty Name="Fx_Hipercolesterolemimia" ColumnName="Fx_Hipercolesterolemimia" />
+          <ScalarProperty Name="Fx_Higado" ColumnName="Fx_Higado" />
+          <ScalarProperty Name="Fx_Cardiovascular_Description" ColumnName="Fx_Cardiovascular_Description" />
+          <ScalarProperty Name="Fx_Cardiovascular" ColumnName="Fx_Cardiovascular" />
+          <ScalarProperty Name="Fx_Epilepsia" ColumnName="Fx_Epilepsia" />
+          <ScalarProperty Name="Fx_Cancer_Description" ColumnName="Fx_Cancer_Description" />
+          <ScalarProperty Name="Fx_Cancer" ColumnName="Fx_Cancer" />
+          <ScalarProperty Name="Fx_Depresion" ColumnName="Fx_Depresion" />
+          <ScalarProperty Name="Fx_Artritis" ColumnName="Fx_Artritis" />
+          <ScalarProperty Name="Fx_Respiratory_Description" ColumnName="Fx_Respiratory_Description" />
+          <ScalarProperty Name="Fx_Respiratory" ColumnName="Fx_Respiratory" />
+          <ScalarProperty Name="Fx_Bulimia" ColumnName="Fx_Bulimia" />
+          <ScalarProperty Name="Fx_Renal_Description" ColumnName="Fx_Renal_Description" />
+          <ScalarProperty Name="Fx_Renal" ColumnName="Fx_Renal" />
+          <ScalarProperty Name="Fx_Anorexia" ColumnName="Fx_Anorexia" />
+          <ScalarProperty Name="Fx_Gastro_Description" ColumnName="Fx_Gastro_Description" />
+          <ScalarProperty Name="Fx_Gastro" ColumnName="Fx_Gastro" />
+          <ScalarProperty Name="Fx_Anemia" ColumnName="Fx_Anemia" />
+          <ScalarProperty Name="Allergic_To_Food" ColumnName="Allergic_To_Food" />
+          <ScalarProperty Name="Alergic_To_Drugs" ColumnName="Alergic_To_Drugs" />
+          <ScalarProperty Name="Supplements_List" ColumnName="Supplements_List" />
+          <ScalarProperty Name="Drug_List" ColumnName="Drug_List" />
+          <ScalarProperty Name="Cirujias_3_Date" ColumnName="Cirujias_3_Date" />
+          <ScalarProperty Name="Cirujias_3" ColumnName="Cirujias_3" />
+          <ScalarProperty Name="Cirujias_2_Date" ColumnName="Cirujias_2_Date" />
+          <ScalarProperty Name="Cirujias_2" ColumnName="Cirujias_2" />
+          <ScalarProperty Name="Cirujias_1_Date" ColumnName="Cirujias_1_Date" />
+          <ScalarProperty Name="Cirujias_1" ColumnName="Cirujias_1" />
+          <ScalarProperty Name="Hx_Other_Description" ColumnName="Hx_Other_Description" />
+          <ScalarProperty Name="Hx_Other" ColumnName="Hx_Other" />
+          <ScalarProperty Name="Hx_Hipertension" ColumnName="Hx_Hipertension" />
+          <ScalarProperty Name="Hx_Vertigo" ColumnName="Hx_Vertigo" />
+          <ScalarProperty Name="Hx_Hiperlipidemia" ColumnName="Hx_Hiperlipidemia" />
+          <ScalarProperty Name="Hx_Tiroide" ColumnName="Hx_Tiroide" />
+          <ScalarProperty Name="Hx_Hipercolesterolemia" ColumnName="Hx_Hipercolesterolemia" />
+          <ScalarProperty Name="Hx_Migrane" ColumnName="Hx_Migrane" />
+          <ScalarProperty Name="Hx_Higado" ColumnName="Hx_Higado" />
+          <ScalarProperty Name="Hx_Mareos" ColumnName="Hx_Mareos" />
+          <ScalarProperty Name="Hx_Epilepsia" ColumnName="Hx_Epilepsia" />
+          <ScalarProperty Name="Hx_Hipotension" ColumnName="Hx_Hipotension" />
+          <ScalarProperty Name="Hx_Diabetes" ColumnName="Hx_Diabetes" />
+          <ScalarProperty Name="Hx_Hipoglucemia" ColumnName="Hx_Hipoglucemia" />
+          <ScalarProperty Name="Hx_Depresion" ColumnName="Hx_Depresion" />
+          <ScalarProperty Name="Hx_Renal_Description" ColumnName="Hx_Renal_Description" />
+          <ScalarProperty Name="Hx_Renal" ColumnName="Hx_Renal" />
+          <ScalarProperty Name="Hx_Artritis" ColumnName="Hx_Artritis" />
+          <ScalarProperty Name="Hx_Gastro_Description" ColumnName="Hx_Gastro_Description" />
+          <ScalarProperty Name="Hx_Gastro" ColumnName="Hx_Gastro" />
+          <ScalarProperty Name="Hx_Bulimia" ColumnName="Hx_Bulimia" />
+          <ScalarProperty Name="Hx_Cardiovascular_Description" ColumnName="Hx_Cardiovascular_Description" />
+          <ScalarProperty Name="Hx_Cardiovascular" ColumnName="Hx_Cardiovascular" />
+          <ScalarProperty Name="Hx_Anorexia" ColumnName="Hx_Anorexia" />
+          <ScalarProperty Name="Hx_Cancer_Description" ColumnName="Hx_Cancer_Description" />
+          <ScalarProperty Name="Hx_Cancer" ColumnName="Hx_Cancer" />
+          <ScalarProperty Name="Hx_Anemia" ColumnName="Hx_Anemia" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="Patient_Record_Assessment_ID" ColumnName="Patient_Record_Assessment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientDailyMenu">
+      <EntityTypeMapping TypeName="NutritionDBModel.PatientDailyMenu">
+        <MappingFragment StoreEntitySet="PatientDailyMenu">
+          <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
+          <ScalarProperty Name="Food" ColumnName="Food" />
+          <ScalarProperty Name="Portion" ColumnName="Portion" />
+          <ScalarProperty Name="DailyMenuEntryDate" ColumnName="DailyMenuEntryDate" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="DailyMenu_ID" ColumnName="DailyMenu_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="NutritionDBModel.Patients">
+        <MappingFragment StoreEntitySet="Patients">
+          <ScalarProperty Name="Emergency_Contact_Phone" ColumnName="Emergency_Contact_Phone" />
+          <ScalarProperty Name="Emergency_Contact_Relationship" ColumnName="Emergency_Contact_Relationship" />
+          <ScalarProperty Name="Emergency_Contact" ColumnName="Emergency_Contact" />
+          <ScalarProperty Name="Work_Phone" ColumnName="Work_Phone" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Other_Phone" ColumnName="Other_Phone" />
+          <ScalarProperty Name="Main_Phone" ColumnName="Main_Phone" />
+          <ScalarProperty Name="Res_ZipCode" ColumnName="Res_ZipCode" />
+          <ScalarProperty Name="Res_Town" ColumnName="Res_Town" />
+          <ScalarProperty Name="Res_Address_Line_2" ColumnName="Res_Address_Line_2" />
+          <ScalarProperty Name="Res_Address_Line_1" ColumnName="Res_Address_Line_1" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Record_Date" ColumnName="Record_Date" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="NutritionDBModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NutritionDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="NutritionDBModel.UserAccounts">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserAccount_ID" ColumnName="UserAccount_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
