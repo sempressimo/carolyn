@@ -17,7 +17,7 @@ namespace Carolyn
             {
                 try
                 {
-                    this.txtRecordDate.Text = DateTime.Today.ToShortDateString();
+                    this.txtRecordDate.Value = DateTime.Today.ToShortDateString();
 
                     if (Request.QueryString["id"] != null)
                     {
@@ -37,25 +37,25 @@ namespace Carolyn
         {
             Patients p = this.db.Patients.Single(k => k.Patient_ID == Key);
 
-            this.txtAge.Text = p.Age.ToString();
-            this.txtBirthdate.Text = p.Birthday.Value.ToShortDateString();
-            this.txtEmail.Text = p.Email;
-            p.Emergency_Contact = this.txtAge.Text;
-            p.Emergency_Contact_Phone = this.txtAge.Text;
-            p.Emergency_Contact_Relationship = this.txtAge.Text;
-            p.Full_Name = this.txtAge.Text;
+            this.txtAge.Value = p.Age.ToString();
+            this.txtBirthdate.Value = p.Birthday.Value.ToShortDateString();
+            this.txtEmail.Value = p.Email;
+            p.Emergency_Contact = this.txtAge.Value;
+            p.Emergency_Contact_Phone = this.txtAge.Value;
+            p.Emergency_Contact_Relationship = this.txtAge.Value;
+            p.Full_Name = this.txtAge.Value;
             //p.IsActive = this.cbIsActive.Checked;
-            p.Job = this.txtOcupation.Text;
-            p.Main_Phone = this.txtMainPhone.Text;
-            p.Other_Phone = this.txtSecondaryPhone.Text;
-            p.Record_Date = Convert.ToDateTime(this.txtRecordDate.Text);
+            p.Job = this.txtOcupation.Value;
+            p.Main_Phone = this.txtMainPhone.Value;
+            p.Other_Phone = this.txtSecondaryPhone.Value;
+            p.Record_Date = Convert.ToDateTime(this.txtRecordDate.Value);
             //p.Record_Number = this.txtRecordNumber.Text;
-            p.Res_Address_Line_1 = this.txtAddressLine1.Text;
-            p.Res_Address_Line_2 = this.txtAddressLine2.Text;
-            p.Res_Town = this.txtTown.Text;
-            p.Res_ZipCode = this.txtZipcode.Text;
+            p.Res_Address_Line_1 = this.txtAddressLine1.Value;
+            p.Res_Address_Line_2 = this.txtAddressLine2.Value;
+            p.Res_Town = this.txtTown.Value;
+            p.Res_ZipCode = this.txtZipcode.Value;
             p.Sex = this.cmbSex.Text;
-            p.Work_Phone = this.txtWorkPhone.Text;
+            p.Work_Phone = this.txtWorkPhone.Value;
         }
 
         protected void lbSave_Click(object sender, EventArgs e)
@@ -73,17 +73,22 @@ namespace Carolyn
         {
             try
             {
-                ListZip lz = db.ListZip.SingleOrDefault(p => p.ZipCode == this.txtZipcode.Text);
+                ListZip lz = db.ListZip.SingleOrDefault(p => p.ZipCode == this.txtZipcode.Value);
 
                 if (lz != null)
                 {
-                    this.txtTown.Text = lz.City;
+                    this.txtTown.Value = lz.City;
                 }
             }
             catch (Exception E)
             {
                 DisplayError(E.Message);
             }
+        }
+
+        protected void lbCancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
