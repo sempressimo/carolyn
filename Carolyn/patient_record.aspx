@@ -17,78 +17,89 @@
 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtRecordDate" ErrorMessage="La fecha es requerida.">*</asp:RequiredFieldValidator>
 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtBirthdate" ErrorMessage="La fecha de nacimiento es requerida.">*</asp:RequiredFieldValidator>
 
-<h3><span class="label label-info">Identificación</span></h3>
+<h3><span class="label label-warning">Identificación</span></h3>
 
-    <div class="form-group">
-    <label>Nombre Completo</label>
-    <input ID="txtFullname" runat="server" class="form-control" placeholder="Nombre y apellidos..."/>
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="form-group">
+            <label>Nombre Completo</label>
+            <input ID="txtFullname" runat="server" class="form-control" placeholder="Nombre y apellidos..."/>
+            </div>
     
-    <div class="form-group">
-    <label>Fecha de Expediente</label>
-    <input ID="txtRecordDate" runat="server" class="form-control"/>
-    </div>
+            <div class="form-group">
+            <label>Fecha de Expediente</label>
+            <input ID="txtRecordDate" runat="server" class="form-control"/>
+            </div>
 
-    <div class="form-group">
-    <label>Fecha de Nacimiento</label>
-    <input ID="txtBirthdate" runat="server" class="form-control"/>
-    </div>
+            <div class="form-group">
+            <label>Fecha de Nacimiento</label>
+            <input ID="txtBirthdate" runat="server" class="form-control"/>
+            </div>
 
-    <div class="form-group">
-    <label>Edad</label>
-    <input ID="txtAge" runat="server" class="form-control" placeholder="Se calcula automagicamente con la fecha de nacimiento"/>
-    </div>
+            <div class="form-group">
+            <label>Edad</label>
+            <input ID="txtAge" runat="server" class="form-control" placeholder="Se calcula automagicamente con la fecha de nacimiento"/>
+            </div>
 
-    <div class="form-group">
-    <label>Dirección Residencial</label>
-    <input ID="txtAddressLine1" class="form-control" runat="server"/><br/>
-    <input ID="txtAddressLine2" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Dirección Residencial</label>
+            <input ID="txtAddressLine1" class="form-control" runat="server"/><br/>
+            <input ID="txtAddressLine2" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-        <label>Sexo</label>
-        <asp:DropDownList runat="server" CssClass="form-control" ID="cmbSex" >
-        <asp:ListItem Value="M">Masculino</asp:ListItem>
-        <asp:ListItem Value="F">Femenino</asp:ListItem>
-        </asp:DropDownList>
-    </div>
+            <div class="form-group">
+            <label>Sexo</label>
+            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbSex" >
+            <asp:ListItem Value="M">Masculino</asp:ListItem>
+            <asp:ListItem Value="F">Femenino</asp:ListItem>
+            </asp:DropDownList>
+            </div>
 
-    <div class="form-group">
-    <label>Zip Code</label>
-    <input ID="txtZipcode" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Zip Code</label>
+            <input ID="txtZipcode" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-    <label>Pueblo</label>
-    <input ID="txtTown" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Pueblo</label>
+            <input ID="txtTown" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-    <label>Ocupación</label>
-    <input ID="txtOcupation" class="form-control" runat="server"/>
-    </div>
+        </div>
+        <div class="col-lg-6">
+            
+            <div class="form-group">
+            <label>Ocupación</label>
+            <input ID="txtOcupation" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-    <label>Teléfono Principal</label>
-    <input ID="txtMainPhone" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Teléfono Principal</label>
+            <input ID="txtMainPhone" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-    <label>txtSecondaryPhone</label>
-    <input ID="txtSecondaryPhone" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Teléfono Secundario</label>
+            <input ID="txtSecondaryPhone" class="form-control" runat="server"/>
+            </div>
     
-    <div class="form-group">
-    <label>Teléfono Trabajo</label>
-    <input ID="txtWorkPhone" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Teléfono Trabajo</label>
+            <input ID="txtWorkPhone" class="form-control" runat="server"/>
+            </div>
 
-    <div class="form-group">
-    <label>Email</label>
-    <input ID="txtEmail" class="form-control" runat="server"/>
-    </div>
+            <div class="form-group">
+            <label>Email</label>
+            <input ID="txtEmail" class="form-control" runat="server"/>
+            </div>
 
-<h3><span class="label label-info">Cuenta de usuario</span></h3>
+        </div>
+    </div>
+</div>
+
+<h3><span class="label label-warning">Cuenta de usuario</span></h3>
 
     <div class="form-group">
     <label>Contraseña</label>
@@ -100,7 +111,7 @@
     <input ID="txtPassword2" class="form-control" runat="server"/>
     </div>
 
-<h3><span class="label label-info">Contacto de Emergencia</span></h3>
+<h3><span class="label label-warning">Contacto de Emergencia</span></h3>
 
     <div class="form-group">
     <label>Nombre Completo</label>
