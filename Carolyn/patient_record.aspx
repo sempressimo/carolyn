@@ -7,7 +7,7 @@
 
 <div style="background-color: white !important" class="jumbotron">
 
-<h2><span class="glyphicon glyphicon-heart-empty">&nbsp;</span>Record del Paciente</h2>
+<h2><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;Record del Paciente</h2>
 
 <asp:ValidationSummary ID="ValidationSummary1" CssClass="" runat="server" />
 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
