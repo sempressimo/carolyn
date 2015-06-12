@@ -13,5 +13,15 @@ namespace Carolyn
         {
 
         }
+
+        protected void lbSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lbCancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
