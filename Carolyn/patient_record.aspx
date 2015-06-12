@@ -7,7 +7,7 @@
 
 <div style="background-color: white !important" class="jumbotron">
 
-<h2>Record del Paciente</h2>
+<h2><span class="glyphicon glyphicon-heart-empty">&nbsp;</span>Record del Paciente</h2>
 
 <asp:ValidationSummary ID="ValidationSummary1" CssClass="" runat="server" />
 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
@@ -126,6 +126,8 @@
         <asp:LinkButton ID="lbSave" runat="server" onclick="lbSave_Click" CssClass="btn btn-primary">Actualizar</asp:LinkButton>
         <asp:LinkButton ID="lbCancel" runat="server" CssClass="btn btn-default" OnClick="lbCancel_Click">Cancel</asp:LinkButton>
     </div>
+
+    <br/>
 
 </div> <!-- jumbotron -->
 
