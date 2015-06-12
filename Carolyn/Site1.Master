@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>100x35 Dietitian Virtual Office</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server" />
     <script type="text/javascript" src="Scripts/jquery-2.1.4.js"></script>
