@@ -21,13 +21,13 @@ namespace Carolyn
         {
             try
             {
-                var L = this.db.v_UserAccounts.SingleOrDefault(p => p.Username == this.txtUsername.Text && p.UserPassword == this.txtPassword.Text);
+                var L = this.db.v_UserAccounts.SingleOrDefault(p => p.Username == this.txtUsername.Value && p.UserPassword == this.txtPassword.Value);
 
                 if (L != null)
                 {
                     if (L.Role_Description == "Dietitian")
                     {
-                        FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                        FormsAuthentication.SetAuthCookie(this.txtUsername.Value, false);
 
                         Response.Redirect("default.aspx");
                     }
@@ -36,7 +36,7 @@ namespace Carolyn
                         //
                         // Patient role
                         //
-                        FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                        FormsAuthentication.SetAuthCookie(this.txtUsername.Value, false);
 
                         Response.Redirect("/PatientHome/default.aspx");
                     }

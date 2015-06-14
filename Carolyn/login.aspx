@@ -29,10 +29,10 @@
                     <asp:Image runat="server" ImageUrl="~/images/logo.jpg" CssClass="img-responsive logo" />
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="lbLogin">
                         <div class="form-group">
-                            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" CssClass="form-control"></asp:TextBox>
+                            <input ID="txtUsername" runat="server" placeholder="Username" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" CssClass="form-control"></asp:TextBox>
+                            <input ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <p>&nbsp;</p>
