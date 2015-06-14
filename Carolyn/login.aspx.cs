@@ -10,14 +10,47 @@ namespace Carolyn
 {
     public partial class login : System.Web.UI.Page
     {
+        NutritionDBEntities1 db = new NutritionDBEntities1();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.txtUsername.Focus();
         }
 
         protected void lbLogin_Click(object sender, EventArgs e)
         {
-            FormsAuthentication.RedirectFromLoginPage("", false);
+            try
+            {
+                var L = this.db.v_UserAccounts.SingleOrDefault(p => p.Username == this.txtUsername.Text && p.UserPassword == this.txtPassword.Text);
+
+                if (L != null)
+                {
+                    if (L.Role_Description == "Dietitian")
+                    {
+                        FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+
+                        Response.Redirect("default.aspx");
+                    }
+                    else
+                    {
+                        //
+                        // Patient role
+                        //
+                        FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+
+                        Response.Redirect("/PatientHome/default.aspx");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Usuario o contraseña invalida. Verifique que CAPS no este puesto.");
+                }
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
         }
     }
 }
