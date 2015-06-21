@@ -28,6 +28,7 @@ namespace Carolyn
         public virtual DbSet<Appointment_Requests> Appointment_Requests { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
+        public virtual DbSet<HourSlot> HourSlots { get; set; }
         public virtual DbSet<Initial_Assessment> Initial_Assessment { get; set; }
         public virtual DbSet<LabData> LabDatas { get; set; }
         public virtual DbSet<ListZip> ListZips { get; set; }
