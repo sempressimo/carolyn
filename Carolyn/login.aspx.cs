@@ -38,6 +38,8 @@ namespace Carolyn
                         //
                         FormsAuthentication.SetAuthCookie(this.txtUsername.Value, false);
 
+                        Session["Patient_ID"] = L.Patient_ID;
+
                         Response.Redirect("/PatientHome/default.aspx");
                     }
                 }
