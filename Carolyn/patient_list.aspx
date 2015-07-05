@@ -34,18 +34,22 @@
                 <div class="panel-body">
 
                     <asp:LinkButton ID="lbNewRecord" OnClick="lbNewRecord_Click" CausesValidation="false" runat="server" CssClass="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;New Record</asp:LinkButton>
-
+                    <br/>
                     <div class="table-responsive">
-                        <asp:GridView ID="gvRecords" Width="100%" runat="server" DataKeyNames="Patient_ID" CssClass="table table-striped table-bordered table-condensed" EmptyDataText="There are no comebacks." OnRowCommand="gvRecords_RowCommand" OnRowDeleting="gvRecords_RowDeleting" AutoGenerateColumns="False">
+                        <asp:GridView ID="gvRecords" Width="100%" runat="server" DataKeyNames="Patient_ID" CssClass="table table-striped table-bordered table-condensed" EmptyDataText="No hay records para los criterios de búsqueda.." OnRowCommand="gvRecords_RowCommand" OnRowDeleting="gvRecords_RowDeleting" AutoGenerateColumns="False">
                         <Columns>
                         <asp:ButtonField CommandName="Open" Text="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i> Open" ControlStyle-CssClass="btn btn-info" >
-<ControlStyle CssClass="btn btn-info"></ControlStyle>
+                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
                             </asp:ButtonField>
                         <asp:ButtonField CommandName="Delete" Text="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i> Delete" ControlStyle-CssClass="btn btn-danger" >
-<ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                            <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                             </asp:ButtonField>
-                            <asp:BoundField DataField="ReasonDescription" HeaderText="Reason Description" />
-                            <asp:BoundField DataField="IsActive" HeaderText="Active" />
+                            <asp:BoundField DataField="Full_Name" HeaderText="Nombre" />
+                            <asp:BoundField DataField="Age" HeaderText="Edad" />
+                            <asp:BoundField DataField="Sex" HeaderText="Sexo" />
+                            <asp:BoundField DataField="Res_Town" HeaderText="Pueblo" />
+                            <asp:BoundField DataField="Main_Phone" HeaderText="Teléfono" />
+                            <asp:BoundField DataField="Work_Phone" HeaderText="Teléfono Trab." />
                         </Columns>
                         </asp:GridView>
                     </div>
