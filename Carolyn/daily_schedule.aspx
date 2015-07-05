@@ -7,12 +7,28 @@
 
     <div style="background-color: white !important" class="jumbotron">
 
-        <h2><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;Itinerario Diario</h2>
+        <div class="page-header">
+            <h3><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Itinerario Diario</h3>
+            <p>Dietista: Carolyn Landrau</p>
+        
+            <asp:ValidationSummary ID="ValidationSummary1" CssClass="" runat="server" />
+            <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-        <asp:ValidationSummary ID="ValidationSummary1" CssClass="" runat="server" />
-        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
+            <div class="form-group">
+                <label>Dia:</label>
+                <input ID="txtDate" runat="server" class="form-control" placeholder="mm/dd/aaaa"/>
+            </div>
 
+        </div>
 
+        <asp:ListView ID="lvSchedule" runat="server">
+            <ItemTemplate>
+                <%#Eval("HourSlotTime") %>:&nbsp;
+            </ItemTemplate>
+            <ItemSeparatorTemplate>
+                <hr/>
+            </ItemSeparatorTemplate>
+        </asp:ListView>
 
     </div>
 

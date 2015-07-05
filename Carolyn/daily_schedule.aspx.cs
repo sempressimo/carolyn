@@ -13,12 +13,23 @@ namespace Carolyn
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.LoadHourSlots();
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
         }
 
         protected void LoadHourSlots()
-        { 
-            var HourSlots = this.db.ho
+        {
+            var HourSlots = this.db.HourSlots.Where(p => p.IsActive == true).OrderBy(p => p.HourSlotOrder);
+
+            this.lvSchedule.DataSource = HourSlots.ToList();
+            this.lvSchedule.DataBind();
         }
     }
 }
