@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/form.css" />
 
         <script src="Scripts/jquery-2.1.4.min.js"></script>
@@ -32,7 +32,7 @@
                             <input ID="txtUsername" runat="server" placeholder="Username" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <input ID="txtPassword" runat="server" TextMode="Password" placeholder="Password" class="form-control"/>
+                            <input ID="txtPassword" runat="server" type="password" placeholder="Password" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <p>&nbsp;</p>
