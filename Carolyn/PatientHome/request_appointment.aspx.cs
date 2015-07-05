@@ -13,5 +13,15 @@ namespace Carolyn.PatientHome
         {
 
         }
+
+        protected void lbSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lbCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("default.aspx");
+        }
     }
 }

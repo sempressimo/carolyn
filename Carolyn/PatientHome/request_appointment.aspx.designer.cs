@@ -40,6 +40,15 @@ namespace Carolyn.PatientHome {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtTime;
         
         /// <summary>
+        /// cmbRelationship control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbRelationship;
+        
+        /// <summary>
         /// lbSave control.
         /// </summary>
         /// <remarks>

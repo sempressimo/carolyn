@@ -43,8 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -74,11 +80,23 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\form.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\style.css" />
+    <Content Include="daily_schedule.aspx" />
     <Content Include="default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Icon.png" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\login.png" />
+    <Content Include="images\logo.jpg" />
     <Content Include="login.aspx" />
+    <Content Include="PatientHome\default.aspx" />
+    <Content Include="PatientHome\my_appointments.aspx" />
+    <Content Include="PatientHome\request_appointment.aspx" />
+    <Content Include="PatientHome\signout.aspx" />
     <Content Include="patient_initial_assessment.aspx" />
+    <Content Include="patient_list.aspx" />
     <Content Include="patient_record.aspx" />
     <Content Include="patient_record_evaluation.aspx" />
     <Content Include="packages.config" />
@@ -88,12 +106,32 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="NutritionDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NutritionDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="NutritionDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NutritionDBModel.edmx</DependentUpon>
+      <LastGenOutput>NutritionDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="NutritionDBModel.edmx.diagram">
+      <DependentUpon>NutritionDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="NutritionDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NutritionDBModel.edmx</DependentUpon>
+      <LastGenOutput>NutritionDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="PatientHome\PatientSite.Master" />
+    <None Include="Properties\PublishProfiles\carolyn.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="signout.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -146,12 +184,40 @@
     <Compile Include="admin\user_account_detail.aspx.designer.cs">
       <DependentUpon>user_account_detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Appointment.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment_Requests.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Blog.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="daily_schedule.aspx.cs">
+      <DependentUpon>daily_schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="daily_schedule.aspx.designer.cs">
+      <DependentUpon>daily_schedule.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HourSlot.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Initial_Assessment.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LabData.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListZip.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -160,10 +226,64 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Message.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NutritionDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="NutritionDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NutritionDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDailyMenu.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHome\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientHome\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHome\my_appointments.aspx.cs">
+      <DependentUpon>my_appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientHome\my_appointments.aspx.designer.cs">
+      <DependentUpon>my_appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHome\PatientSite.Master.cs">
+      <DependentUpon>PatientSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientHome\PatientSite.Master.designer.cs">
+      <DependentUpon>PatientSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHome\request_appointment.aspx.cs">
+      <DependentUpon>request_appointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientHome\request_appointment.aspx.designer.cs">
+      <DependentUpon>request_appointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientHome\signout.aspx.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientHome\signout.aspx.designer.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
     </Compile>
     <Compile Include="patient_initial_assessment.aspx.cs">
       <DependentUpon>patient_initial_assessment.aspx</DependentUpon>
@@ -172,12 +292,22 @@
     <Compile Include="patient_initial_assessment.aspx.designer.cs">
       <DependentUpon>patient_initial_assessment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="patient_list.aspx.cs">
+      <DependentUpon>patient_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient_list.aspx.designer.cs">
+      <DependentUpon>patient_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patient_record.aspx.cs">
       <DependentUpon>patient_record.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="patient_record.aspx.designer.cs">
       <DependentUpon>patient_record.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient_Record_Assessment.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="patient_record_evaluation.aspx.cs">
       <DependentUpon>patient_record_evaluation.aspx</DependentUpon>
@@ -187,6 +317,16 @@
       <DependentUpon>patient_record_evaluation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="signout.aspx.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="signout.aspx.designer.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,19 +334,26 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_UserAccounts.cs">
+      <DependentUpon>NutritionDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="NutritionDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NutritionDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\PublishProfiles\nutritionportal.pubxml" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
