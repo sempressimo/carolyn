@@ -9,7 +9,7 @@ namespace Carolyn
 {
     public partial class patient_record : System.Web.UI.Page
     {
-        NutritionDBEntities db = new NutritionDBEntities();
+        NutritionDBEntities1 db = new NutritionDBEntities1();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace Carolyn
 
         private void LoadRecord(int Key)
         {
-            Patients p = this.db.Patients.Single(k => k.Patient_ID == Key);
+            Patient p = this.db.Patients.Single(k => k.Patient_ID == Key);
 
             this.txtAge.Value = p.Age.ToString();
             this.txtBirthdate.Value = p.Birthday.Value.ToShortDateString();
@@ -58,9 +58,78 @@ namespace Carolyn
             p.Work_Phone = this.txtWorkPhone.Value;
         }
 
+        protected void AddRecord()
+        {
+            Patient p = new Patient();
+
+            p.Age = Convert.ToInt32(this.txtAge.Value);
+            p.Birthday = Convert.ToDateTime(this.txtBirthdate.Value);
+            p.Email = this.txtEmail.Value;
+            p.Emergency_Contact = this.txtContactName.Value;
+            p.Emergency_Contact_Phone = this.txtContactPhone.Value;
+            p.Emergency_Contact_Relationship = this.cmbRelationship.SelectedValue;
+            p.Full_Name = this.txtFullname.Value;
+            p.Job = this.txtOcupation.Value;
+            p.Main_Phone = this.txtMainPhone.Value;
+            p.Other_Phone = this.txtSecondaryPhone.Value;
+            p.Record_Date = Convert.ToDateTime(this.txtRecordDate.Value);
+            p.Res_Address_Line_1 = this.txtAddressLine1.Value;
+            p.Res_Address_Line_2 = this.txtAddressLine2.Value;
+            p.Res_Town = this.txtTown.Value;
+            p.Res_ZipCode = this.txtZipcode.Value;
+            p.Sex = this.cmbSex.SelectedValue;
+            p.Work_Phone = this.txtWorkPhone.Value;
+
+            db.Patients.Add(p);
+            db.SaveChanges();
+
+            Response.Redirect("patient_list.aspx");
+        }
+
+        protected void SaveRecord(int Patient_ID)
+        {
+            Patient p = this.db.Patients.Single(k => k.Patient_ID == Patient_ID);
+
+            p.Age = Convert.ToInt32(this.txtAge.Value);
+            p.Birthday = Convert.ToDateTime(this.txtBirthdate.Value);
+            p.Email = this.txtEmail.Value;
+            p.Emergency_Contact = this.txtContactName.Value;
+            p.Emergency_Contact_Phone = this.txtContactPhone.Value;
+            p.Emergency_Contact_Relationship = this.cmbRelationship.SelectedValue;
+            p.Full_Name = this.txtFullname.Value;
+            p.Job = this.txtOcupation.Value;
+            p.Main_Phone = this.txtMainPhone.Value;
+            p.Other_Phone = this.txtSecondaryPhone.Value;
+            p.Record_Date = Convert.ToDateTime(this.txtRecordDate.Value);
+            p.Res_Address_Line_1 = this.txtAddressLine1.Value;
+            p.Res_Address_Line_2 = this.txtAddressLine2.Value;
+            p.Res_Town = this.txtTown.Value;
+            p.Res_ZipCode = this.txtZipcode.Value;
+            p.Sex = this.cmbSex.SelectedValue;
+            p.Work_Phone = this.txtWorkPhone.Value;
+
+            this.db.SaveChanges();
+        }
+
         protected void lbSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int Patient_ID = Convert.ToInt32(Request.QueryString["id"]);
 
+                    this.SaveRecord(Patient_ID);        
+                }
+                else
+                {
+                    this.AddRecord();
+                }
+            }
+            catch (Exception E)
+            {
+                DisplayError(E.Message);
+            }
         }
 
         private void DisplayError(string message)
@@ -73,7 +142,7 @@ namespace Carolyn
         {
             try
             {
-                ListZip lz = db.ListZip.SingleOrDefault(p => p.ZipCode == this.txtZipcode.Value);
+                ListZip lz = db.ListZips.SingleOrDefault(p => p.ZipCode == this.txtZipcode.Value);
 
                 if (lz != null)
                 {
@@ -88,7 +157,7 @@ namespace Carolyn
 
         protected void lbCancel_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("patient_list.aspx");
         }
     }
 }
