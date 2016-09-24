@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
+    <form id="frmPatient" runat="server">
         <uc1:patient_record_uc ID="patient_record_uc1" runat="server" />
     </form>
 </asp:Content>

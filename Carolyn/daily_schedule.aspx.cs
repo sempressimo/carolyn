@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace Carolyn
 {
     public partial class daily_schedule : System.Web.UI.Page
     {
-        NutritionDBEntities1 db = new NutritionDBEntities1();
+        NutritionDBEntities db = new NutritionDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {

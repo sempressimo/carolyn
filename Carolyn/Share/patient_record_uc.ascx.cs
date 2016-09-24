@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace Carolyn.Share
 {
     public partial class patient_record_uc : System.Web.UI.UserControl
     {
-        NutritionDBEntities1 db = new NutritionDBEntities1();
+        NutritionDBEntities db = new NutritionDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -82,8 +83,6 @@ namespace Carolyn.Share
 
             db.Patients.Add(p);
             db.SaveChanges();
-
-            Response.Redirect("patient_list.aspx");
         }
 
         protected void SaveRecord(int Patient_ID)
@@ -125,6 +124,17 @@ namespace Carolyn.Share
                 {
                     this.AddRecord();
                 }
+
+                Page p = this.Page;
+
+                if (p.Form.Name == "frmPatient")
+                {
+                    Response.Redirect("default.aspx");
+                }
+                else
+                {
+                    Response.Redirect("patient_list.aspx");
+                }
             }
             catch (Exception E)
             {
@@ -157,7 +167,16 @@ namespace Carolyn.Share
 
         protected void lbCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("patient_list.aspx");
+            Page p = this.Page;
+
+            if (p.Form.Name == "frmPatient")
+            {
+                Response.Redirect("default.aspx");
+            }
+            else
+            {
+                Response.Redirect("patient_list.aspx");
+            }
         }
     }
 }

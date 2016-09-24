@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Data_Layer;
 
 namespace Carolyn
 {
     public partial class login : System.Web.UI.Page
     {
-        NutritionDBEntities1 db = new NutritionDBEntities1();
+        NutritionDBEntities db = new NutritionDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
