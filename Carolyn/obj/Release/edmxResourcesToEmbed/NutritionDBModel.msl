@@ -1,8 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="NutritionDBModelStoreContainer" CdmEntityContainer="NutritionDBEntities">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NutritionDBModelStoreContainer" CdmEntityContainer="NutritionDBEntities1">
+    <EntitySetMapping Name="Appointment_Requests">
+      <EntityTypeMapping TypeName="NutritionDBModel.Appointment_Requests">
+        <MappingFragment StoreEntitySet="Appointment_Requests">
+          <ScalarProperty Name="Request_Status" ColumnName="Request_Status" />
+          <ScalarProperty Name="Requested_DateTime" ColumnName="Requested_DateTime" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="Appointment_Request_ID" ColumnName="Appointment_Request_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="NutritionDBModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointments">
+          <ScalarProperty Name="AppointmentDateTime" ColumnName="AppointmentDateTime" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="Appointment_ID" ColumnName="Appointment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Blogs">
-      <EntityTypeMapping TypeName="NutritionDBModel.Blogs">
+      <EntityTypeMapping TypeName="NutritionDBModel.Blog">
         <MappingFragment StoreEntitySet="Blogs">
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Blog_Body" ColumnName="Blog_Body" />
@@ -10,6 +29,15 @@
           <ScalarProperty Name="Blog_Date" ColumnName="Blog_Date" />
           <ScalarProperty Name="Blog_Title" ColumnName="Blog_Title" />
           <ScalarProperty Name="Blog_ID" ColumnName="Blog_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HourSlots">
+      <EntityTypeMapping TypeName="NutritionDBModel.HourSlot">
+        <MappingFragment StoreEntitySet="HourSlots">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="HourSlotOrder" ColumnName="HourSlotOrder" />
+          <ScalarProperty Name="HourSlotTime" ColumnName="HourSlotTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,7 +75,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LabData">
+    <EntitySetMapping Name="LabDatas">
       <EntityTypeMapping TypeName="NutritionDBModel.LabData">
         <MappingFragment StoreEntitySet="LabData">
           <ScalarProperty Name="Other" ColumnName="Other" />
@@ -74,7 +102,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ListZip">
+    <EntitySetMapping Name="ListZips">
       <EntityTypeMapping TypeName="NutritionDBModel.ListZip">
         <MappingFragment StoreEntitySet="ListZip">
           <ScalarProperty Name="Inactive" ColumnName="Inactive" />
@@ -87,7 +115,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Messages">
-      <EntityTypeMapping TypeName="NutritionDBModel.Messages">
+      <EntityTypeMapping TypeName="NutritionDBModel.Message">
         <MappingFragment StoreEntitySet="Messages">
           <ScalarProperty Name="Posted_To" ColumnName="Posted_To" />
           <ScalarProperty Name="Posted_By" ColumnName="Posted_By" />
@@ -198,7 +226,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PatientDailyMenu">
+    <EntitySetMapping Name="PatientDailyMenus">
       <EntityTypeMapping TypeName="NutritionDBModel.PatientDailyMenu">
         <MappingFragment StoreEntitySet="PatientDailyMenu">
           <ScalarProperty Name="CategoryGroup" ColumnName="CategoryGroup" />
@@ -211,7 +239,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Patients">
-      <EntityTypeMapping TypeName="NutritionDBModel.Patients">
+      <EntityTypeMapping TypeName="NutritionDBModel.Patient">
         <MappingFragment StoreEntitySet="Patients">
           <ScalarProperty Name="Emergency_Contact_Phone" ColumnName="Emergency_Contact_Phone" />
           <ScalarProperty Name="Emergency_Contact_Relationship" ColumnName="Emergency_Contact_Relationship" />
@@ -235,7 +263,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="NutritionDBModel.Roles">
+      <EntityTypeMapping TypeName="NutritionDBModel.Role">
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
           <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
@@ -243,7 +271,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="NutritionDBModel.sysdiagrams">
+      <EntityTypeMapping TypeName="NutritionDBModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="definition" ColumnName="definition" />
           <ScalarProperty Name="version" ColumnName="version" />
@@ -254,8 +282,22 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserAccounts">
-      <EntityTypeMapping TypeName="NutritionDBModel.UserAccounts">
+      <EntityTypeMapping TypeName="NutritionDBModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserAccount_ID" ColumnName="UserAccount_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_UserAccounts">
+      <EntityTypeMapping TypeName="NutritionDBModel.v_UserAccounts">
+        <MappingFragment StoreEntitySet="v_UserAccounts">
+          <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+          <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
           <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />

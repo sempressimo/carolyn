@@ -4,3 +4,13 @@ C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\C
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\Carolyn.pdb
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Release\Carolyn.dll
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Release\Carolyn.pdb
+C:\git\carolyn\Carolyn\bin\Carolyn.dll.config
+C:\git\carolyn\Carolyn\bin\Carolyn.dll
+C:\git\carolyn\Carolyn\bin\Carolyn.pdb
+C:\git\carolyn\Carolyn\obj\Release\Carolyn.csprojResolveAssemblyReference.cache
+C:\git\carolyn\Carolyn\obj\Release\Carolyn.dll
+C:\git\carolyn\Carolyn\obj\Release\Carolyn.pdb
+C:\git\carolyn\Carolyn\bin\EntityFramework.dll
+C:\git\carolyn\Carolyn\bin\EntityFramework.SqlServer.dll
+C:\git\carolyn\Carolyn\bin\EntityFramework.xml
+C:\git\carolyn\Carolyn\bin\EntityFramework.SqlServer.xml

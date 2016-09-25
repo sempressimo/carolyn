@@ -2,710 +2,537 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1>Record del Paciente: Evaluación</h1>
 
-    <h3>MANEJO DE EMERGENCIAS</h3>
+<form id="form_default" runat="server">
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                En caso de emergencia, se notificará a:</td>
-            <td>
-                <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                Relación:
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Teléfono(s):</td>
-            <td>
-                <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
+    <div style="background-color: white !important" class="jumbotron">
 
-    <h3>HISTORIAL MEDICO</h3>
+    <h2><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Record del Paciente: Evaluación</h2>
 
-    <p>Padece o ha padecido de:</p>
+    <asp:ValidationSummary ID="ValidationSummary1" CssClass="" runat="server" />
+    <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbAnemia" runat="server" Text="Anemia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbCancer" runat="server" Text="Cancer:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
-            &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbAnorexia" runat="server" Text="Anorexia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbCardiovascular" runat="server" 
-                    Text="Condiciones cardiovasculares:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbBulimia" runat="server" Text="Bulimia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbGastro" runat="server" 
-                    Text="Condiciones Gastrointestinales:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbArtritis" runat="server" Text="Artritis" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbRenal" runat="server" Text="Condiciones Renales:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbAsma" runat="server" Text="Asma" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbRespiratory" runat="server" 
-                    Text="Condiciones respiratorias:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox20" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbDepresion" runat="server" Text="Depresión" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbHipoglucemia" runat="server" Text="Hipoglucemia" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbDiabetes" runat="server" Text="Diabetes" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbMareos" runat="server" Text="Mareos" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbHigado" runat="server" Text="Hígado" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbMigrana" runat="server" Text="Migraña" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbHipercolesterolemia" runat="server" 
-                    Text="Hipercolesterolemia (colesterol alto)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbTiroide" runat="server" Text="Problema de la tiroide" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbHiperlipidemias" runat="server" 
-                    Text="Hiperlipidemias (triglicéridos altos)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbVertigo" runat="server" Text="Vértigo" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbHigado0" runat="server" 
-                    Text="Hipertensión (presión alta)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="cbOther" runat="server" Text="Otros:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox21" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
+        <h3><span class="label label-warning">Manejo de Emergencias</span></h3>
 
-    <h3>Cirugías</h3>
+        <div class="container-fluid">
+            <div class="row">    
+                <div class="col-lg-12">
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                1.
-                &nbsp;<asp:TextBox ID="TextBox22" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Fecha:
-                <asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                2.
-                <asp:TextBox ID="TextBox24" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Fecha:
-                <asp:TextBox ID="TextBox26" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                3.
-                <asp:TextBox ID="TextBox25" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Fecha:
-                <asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+                    <div class="form-group">
+                    <label>En caso de emergencia, se notificará a</label>
+                    <input ID="txtEmergencyFullname" runat="server" class="form-control" placeholder="Nombre y apellidos..."/>
+                    </div>
 
-    <h3>Medicamentos y Suplementos</h3>
+                    <div class="form-group">
+                    <label>Relación</label>
+                    <input ID="txtEmergencyRelationship" runat="server" class="form-control" placeholder="Madre, tio, abuelo, etc."/>
+                    </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                Medicamentos que utiliza actualmente:</td>
-            <td>
-                <asp:TextBox ID="TextBox28" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Suplementos vitaminas/minerales:
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox29" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Alergia a medicamentos:</td>
-            <td>
-                <asp:TextBox ID="TextBox30" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                Alergia a alimentos:
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox31" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+                    <div class="form-group">
+                    <label>Teléfono(s)</label>
+                    <input ID="txtEmergencyPhone" runat="server" class="form-control" type="text" placeholder="###-###-####"/>
+                    </div>
 
-    <h3>HISTORIAL MÉDICO FAMILIAR</h3>
+                </div>
+            </div>
+        </div>
 
-    <p>Alguien de su familia padece de:</p>
+        <h3><span class="label label-warning">Historial Médico</span></h3>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox1" runat="server" Text="Anemia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox2" runat="server" Text="Cancer:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox32" runat="server"></asp:TextBox>
-            &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox3" runat="server" Text="Anorexia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox4" runat="server" 
-                    Text="Condiciones cardiovasculares:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox33" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox5" runat="server" Text="Bulimia" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox6" runat="server" 
-                    Text="Condiciones Gastrointestinales:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox34" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox7" runat="server" Text="Artritis" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox8" runat="server" Text="Condiciones Renales:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox35" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox9" runat="server" Text="Asma" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox10" runat="server" 
-                    Text="Condiciones respiratorias:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox36" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox11" runat="server" Text="Depresión" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox12" runat="server" Text="Hipoglucemia" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox13" runat="server" Text="Diabetes" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox14" runat="server" Text="Mareos" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox15" runat="server" Text="Hígado" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox16" runat="server" Text="Migraña" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox17" runat="server" 
-                    Text="Hipercolesterolemia (colesterol alto)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox18" runat="server" Text="Problema de la tiroide" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox19" runat="server" 
-                    Text="Hiperlipidemias (triglicéridos altos)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox20" runat="server" Text="Vértigo" />
-            </td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox21" runat="server" 
-                    Text="Hipertensión (presión alta)" />
-            </td>
-            <td>
-                <asp:CheckBox ID="CheckBox22" runat="server" Text="Otros:" />
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox37" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
+        <label>Padece o ha padecido de:</label><br/>
 
-    <h3>ESTILO DE VIDA</h3>
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-4">
+                    <asp:CheckBox ID="cbAnemia" CssClass="form-control" runat="server" Text="Anemia" />
+                    <br/>
+                    <asp:CheckBox ID="cbAnorexia" CssClass="form-control" runat="server" Text="Anorexia" />
+                    <br/>
+                    <asp:CheckBox ID="cbBulimia" CssClass="form-control" runat="server" Text="Bulimia" />
+                    <br/>
+                    <asp:CheckBox ID="cbArtritis" CssClass="form-control" runat="server" Text="Artritis" />
+                    <br/>
+                    <asp:CheckBox ID="cbAsma" CssClass="form-control" runat="server" Text="Asma" />
+                    <br/>
+                    <asp:CheckBox ID="cbDepresion" CssClass="form-control" runat="server" Text="Depresión" />
+                    <br/>
+                    <asp:CheckBox ID="cbDiabetes" CssClass="form-control" runat="server" Text="Diabetes" />
+                    <br/>
+                    <asp:CheckBox ID="cbHigado" CssClass="form-control" runat="server" Text="Hígado" />
+                    <br/>
+                    <asp:CheckBox ID="cbHipercolesterolemia" CssClass="form-control" runat="server" Text="Hipercolesterolemia (colesterol alto)" />
+                    <br/>
+                    <asp:CheckBox ID="cbHiperlipidemias" CssClass="form-control" runat="server" Text="Hiperlipidemias (triglicéridos altos)" />
+                    <br/>
+                    <asp:CheckBox ID="cbHighBP" CssClass="form-control" runat="server" Text="Hipertensión (presión alta)" />
+                    <br/>
+                </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox23" runat="server" Text="Alcohol" />
-            </td>
-            <td>
-                Frequencia: 
-                <asp:TextBox ID="TextBox38" runat="server"></asp:TextBox>
-            </td>
-            <td>
-               &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox24" runat="server" Text="Cigarrillos" />
-            </td>
-            <td>
-                Frequencia: 
-                <asp:TextBox ID="TextBox39" runat="server"></asp:TextBox>
-            </td>
-            <td>
-               &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="CheckBox25" runat="server" Text="Actividad física" />
-            </td>
-            <td>
-                Frequencia: 
-                <asp:TextBox ID="TextBox40" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Tipo: 
-                <asp:TextBox ID="TextBox41" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
+                <div class="col-lg-4">
+                    <asp:CheckBox ID="cbCancer" CssClass="form-control" runat="server" Text="Cancer:" />
+                    <br/>
+                    <asp:CheckBox ID="cbCardiovascular"  CssClass="form-control" runat="server" Text="Condiciones cardiovasculares:" />
+                    <br/>
+                    <asp:CheckBox ID="cbGastro" CssClass="form-control" runat="server" Text="Condiciones Gastrointestinales:" />
+                    <br/>
+                    <asp:CheckBox ID="cbRenal" CssClass="form-control" runat="server" Text="Condiciones Renales:" />
+                    <br/>
+                    <asp:CheckBox ID="cbRespiratory" CssClass="form-control" runat="server" Text="Condiciones respiratorias:" />
+                    <br/>
+                    <asp:CheckBox ID="cbHipoglucemia" CssClass="form-control" runat="server" Text="Hipoglucemia" />
+                    <br/>
+                    <asp:CheckBox ID="cbMareos" CssClass="form-control" runat="server" Text="Mareos" />
+                    <br/>
+                    <asp:CheckBox ID="cbMigrana" CssClass="form-control" runat="server" Text="Migraña" />
+                    <br/>
+                    <asp:CheckBox ID="cbTiroide" CssClass="form-control" runat="server" Text="Problema de la tiroide" />
+                    <br/>
+                    <asp:CheckBox ID="cbVertigo" CssClass="form-control" runat="server" Text="Vértigo" />
+                    <br/>
+                    <asp:CheckBox ID="cbOther" CssClass="form-control" runat="server" Text="Otros:" />
+                    <br/>
+                </div>
 
-    <h3>HISTORIAL NUTRICIONAL</h3>
+                <div class="col-lg-4">
+                    <input ID="txtCancerOther" runat="server" class="form-control" placeholder="(Cancer, detalles...)"/>
+                    <br/>
+                    <input ID="txtCardio" runat="server" class="form-control" placeholder="(Cardio, detalles...)"/>
+                    <br/>
+                    <input ID="txtGastro" runat="server" class="form-control" placeholder="(Gastro, detalles...)"/>
+                    <br/>
+                    <input ID="txtRenal" runat="server" class="form-control" placeholder="(Renales, detalles...)"/>
+                    <br/>
+                    <input ID="txtRespiratory" runat="server" class="form-control" placeholder="(Respiratorias, detalles...)"/>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <asp:TextBox ID="txtOther" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br/>
+                </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                ¿Cuántas comidas hace al día?
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox42" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                ¿Cuántas meriendas hace al día?
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox43" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+            </div> <!-- row -->
+        </div> <!-- container-fluid -->
 
-    <p>¿Cuántas veces a la semana consume las siguientes comidas fuera de la casa?</p>
+        <h3><span class="label label-warning">Cirugías</span></h3>
 
-        <table style="width: 100%;">
-        <tr>
-            <td>
-                Desayuno
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox44" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Almuerzo
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox45" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Cena
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox46" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                    <label>(1)</label>
+                    <input ID="txtSurgery1" runat="server" class="form-control" placeholder=""/>
+                    </div>
+                    <div class="form-group">
+                    <label>(2)</label>
+                    <input ID="txtSurgery2" runat="server" class="form-control" placeholder=""/>
+                    </div>
+                    <div class="form-group">
+                    <label>(3)</label>
+                    <input ID="txtSurgery3" runat="server" class="form-control" placeholder=""/>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                    <label>Fecha (1)</label>
+                    <input ID="txtSurgery1Date" runat="server" class="form-control" placeholder="mm/dd/aaaa"/>
+                    </div>
+                    <div class="form-group">
+                    <label>Fecha (2)</label>
+                    <input ID="txtSurgery2Date" runat="server" class="form-control" placeholder="mm/dd/aaaa"/>
+                    </div>
+                    <div class="form-group">
+                    <label>Fecha (3)</label>
+                    <input ID="txtSurgery3Date" runat="server" class="form-control" placeholder="mm/dd/aaaa"/>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <p>Cuando come fuera de la casa, ¿dónde usualmente lo hace?</p>
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbNutHxFastFood" runat="server" 
-                    Text="Restaurante de comida rápida" />
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbNutHxCafeteria" runat="server" Text="Cafetería" />
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbNutHxRestaurant" runat="server" Text="Restaurante" />
-            </td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:CheckBox ID="cbNutHxOther" runat="server" Text="Other:" />
-&nbsp;<asp:TextBox ID="TextBox47" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-    </table>
+        <h3><span class="label label-warning">Medicamentos y Suplementos</span></h3>
 
-    <p>¿Alrededor de cuántas frutas o jugo de frutas consume al día?</p>
-    
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                Fruta fresca</td>
-            <td>
-                <asp:TextBox ID="TextBox48" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Jugo de frutas</td>
-            <td>
-                <asp:TextBox ID="TextBox49" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
 
-    <p>¿Alrededor de cuántos servicios de vegetales se come al día?
-                <asp:TextBox ID="TextBox50" runat="server"></asp:TextBox>
-            </p>
+                    <div class="form-group">
+                    <label>Medicamentos que utiliza actualmente:</label>
+                    <input ID="txtDrugs" runat="server" class="form-control" placeholder="Separados por comas"/>
+                    </div>
 
-    <p>¿Cuántas veces a la semana consume?</p>
+                    <div class="form-group">
+                    <label>Suplementos vitaminas/minerales:</label>
+                    <input ID="txtVitamins" runat="server" class="form-control" placeholder="Separados por comas"/>
+                    </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                Pollo o Pavo
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox51" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Carne
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox52" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Pescado
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox53" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Mariscos
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox54" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div class="form-group">
+                    <label>Alergia a medicamentos:</label>
+                    <input ID="txtAlergies" runat="server" class="form-control" placeholder="Separados por comas"/>
+                    </div>
 
-    <p>¿Qué tipo de bebidas usualmente consume?/ ¿Cuántos servicios al día consume?</p>
+                    <div class="form-group">
+                    <label>Alergia a alimentos:</label>
+                    <input ID="txtFoodAlergies" runat="server" class="form-control" placeholder="Separados por comas"/>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                Agua
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox55" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Leche entera</td>
-            <td>
-                <asp:TextBox ID="TextBox56" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Jugo
-                </td>
-            <td>
-                <asp:TextBox ID="TextBox57" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Leche baja en grasa</td>
-            <td>
-                <asp:TextBox ID="TextBox58" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Refresco</td>
-            <td>
-                <asp:TextBox ID="TextBox59" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Leche sin grasa</td>
-            <td>
-                <asp:TextBox ID="TextBox60" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Refresco de dieta</td>
-            <td>
-                <asp:TextBox ID="TextBox61" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                Cerverza</td>
-            <td>
-                <asp:TextBox ID="TextBox65" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-                <tr>
-            <td>
-                Té</td>
-            <td>
-                <asp:TextBox ID="TextBox62" runat="server"></asp:TextBox>
-                    </td>
-            <td>
-                Vino</td>
-            <td>
-                <asp:TextBox ID="TextBox66" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-                <tr>
-            <td>
-                Té con azúcar</td>
-            <td>
-                <asp:TextBox ID="TextBox63" runat="server"></asp:TextBox>
-                    </td>
-            <td>
-                Licor</td>
-            <td>
-                <asp:TextBox ID="TextBox67" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-                <tr>
-            <td>
-                Bebidas electrolíticas</td>
-            <td>
-                <asp:TextBox ID="TextBox64" runat="server"></asp:TextBox>
-                    </td>
-            <td>
-                Otros:</td>
-            <td>
-                <asp:TextBox ID="TextBox68" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
+        <h3><span class="label label-warning">Historial Médico Familiar</span></h3>
 
-    <p>Razón por la que solicita servicios nutricionales:</p>
-    <p>
-                <asp:TextBox ID="TextBox69" runat="server"></asp:TextBox>
-                    </p>
+        <label>Alguien de su familia padece de:</label><br/>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-4">
+                    <asp:CheckBox ID="cbFamAnemia" CssClass="form-control" runat="server" Text="Anemia" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamAnorexia" CssClass="form-control" runat="server" Text="Anorexia" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamBulimia" CssClass="form-control" runat="server" Text="Bulimia" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamArtritis" CssClass="form-control" runat="server" Text="Artritis" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamAsma" CssClass="form-control" runat="server" Text="Asma" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamDespresion" CssClass="form-control" runat="server" Text="Depresión" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamDiabetes" CssClass="form-control" runat="server" Text="Diabetes" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamHigado" CssClass="form-control" runat="server" Text="Hígado" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamHighCol" CssClass="form-control" runat="server" Text="Hipercolesterolemia (colesterol alto)" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamHighTri" CssClass="form-control" runat="server" Text="Hiperlipidemias (triglicéridos altos)" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamHighBP" CssClass="form-control" runat="server" Text="Hipertensión (presión alta)" />
+                    <br/>
+                </div>
+
+                <div class="col-lg-4">
+                    <asp:CheckBox ID="cbFamCancer" CssClass="form-control" runat="server" Text="Cancer:" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamCardio"  CssClass="form-control" runat="server" Text="Condiciones cardiovasculares:" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamGastro" CssClass="form-control" runat="server" Text="Condiciones Gastrointestinales:" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamRenal" CssClass="form-control" runat="server" Text="Condiciones Renales:" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamRespiratory" CssClass="form-control" runat="server" Text="Condiciones respiratorias:" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamHipoglucemia" CssClass="form-control" runat="server" Text="Hipoglucemia" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamDizziness" CssClass="form-control" runat="server" Text="Mareos" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamMigraine" CssClass="form-control" runat="server" Text="Migraña" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamThyriod" CssClass="form-control" runat="server" Text="Problema de la tiroide" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamVertigo" CssClass="form-control" runat="server" Text="Vértigo" />
+                    <br/>
+                    <asp:CheckBox ID="cbFamOther" CssClass="form-control" runat="server" Text="Otros:" />
+                    <br/>
+                </div>
+
+                <div class="col-lg-4">
+                    <input ID="txtFamCancer" runat="server" class="form-control" placeholder="(Cancer, detalles...)"/>
+                    <br/>
+                    <input ID="txtFamCardio" runat="server" class="form-control" placeholder="(Cardio, detalles...)"/>
+                    <br/>
+                    <input ID="txtFamGastro" runat="server" class="form-control" placeholder="(Gastro, detalles...)"/>
+                    <br/>
+                    <input ID="txtFamRenal" runat="server" class="form-control" placeholder="(Renales, detalles...)"/>
+                    <br/>
+                    <input ID="txtFamRespiratory" runat="server" class="form-control" placeholder="(Respiratorias, detalles...)"/>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <asp:TextBox ID="txtFamOther" CssClass="form-control" runat="server"></asp:TextBox>
+                    <br/>
+                </div>
+
+            </div> <!-- row -->
+        </div> <!-- container-fluid -->
+
+        <h3><span class="label label-warning">Estilo de Vida</span></h3>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-4">
+                    <asp:CheckBox ID="cbAlcoholUse" CssClass="form-control" runat="server" Text="Alcohol" />
+                    <br/>
+                    <asp:CheckBox ID="cbCigarretesUse" CssClass="form-control" runat="server" Text="Cigarrillos" />
+                    <br/>
+                    <asp:CheckBox ID="cbPhysicalActivityUse" CssClass="form-control" runat="server" Text="Cigarrillos" />
+                    <br/>
+                </div>
+
+                <div class="col-lg-4">
+                    <input ID="txtAlcoholFreq" runat="server" class="form-control" placeholder="Frecuencia"/>
+                    <br/>
+                    <input ID="txtCigarretesFreq" runat="server" class="form-control" placeholder="Frecuencia"/>
+                    <br/>
+                    <input ID="txtPhysicalActivity" runat="server" class="form-control" placeholder="Frecuencia"/>
+                    <br/>
+                </div>
+
+                <div class="col-lg-4">
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <input ID="txtPhysicalActivityDescription" runat="server" class="form-control" placeholder="Tipo" />
+                    <br/>
+                </div>
+
+            </div>
+        </div>
+
+        <h3><span class="label label-warning">Historial Nutricional</span></h3>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    <div class="form-group">
+                    <label>¿Cuántas comidas hace al día?</label>
+                    <input ID="Text1" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                        <div class="form-group">
+                        <label>¿Cuántas meriendas hace al día?</label>
+                        <input ID="Text2" runat="server" class="form-control" placeholder="Cantidad"/>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+
+        <label>¿Cuántas veces a la semana consume las siguientes comidas fuera de la casa?</label><br/>
+
+        <label>Cuando come fuera de la casa, ¿dónde usualmente lo hace?</label><br/>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    
+                    <asp:CheckBox ID="cbNutHxFastFood" CssClass="form-control" runat="server" Text="Restaurante de comida rápida" />
+                    <br/>
+                    <asp:CheckBox ID="cbNutCafeteria" CssClass="form-control" runat="server" Text="Cafetería" />
+                    <br/>
+                    <asp:CheckBox ID="cbNutHxCafeteria" CssClass="form-control" runat="server" Text="Cafetería" />
+                    <br/>
+                    <asp:CheckBox ID="cbNutHxRestaurant" CssClass="form-control" runat="server" Text="Restaurante" />
+                    <br/>
+                    <asp:CheckBox ID="cbNutHxOther" CssClass="form-control" runat="server" Text="Other:" />
+                    <br/>
+                </div>
+
+                <div class="col-lg-6">
+                    
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <span class="form-control">&nbsp;</span>
+                    <br/>
+                    <input ID="txtOutOfHomeOther" runat="server" class="form-control" placeholder="Cantidad"/>
+
+                </div>
+
+            </div>
+        </div>
+  
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
+
+                    <label>¿Alrededor de cuántas frutas o jugo de frutas consume al día?</label><br/>
+
+                    <div class="form-group">
+                    <label>Fruta fresca</label>
+                    <input ID="txtQtyFreshFruit" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Jugo de frutas</label>
+                    <input ID="txtQtyFruitJuice" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                
+                    <label>¿Alrededor de cuántos servicios de vegetales se come al día?</label><br/>
+
+                    <div class="form-group">
+                    <label>Vegetales</label>
+                    <input ID="txtVegetablesQty" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <label>¿Cuántas veces a la semana consume?</label><br/>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                    <label>Pollo o pavo</label>
+                    <input ID="txtPolloQty" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Carne</label>
+                    <input ID="txtMeatQty" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div class="form-group">
+                    <label>Pescado</label>
+                    <input ID="txtFishQty" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Mariscos</label>
+                    <input ID="txtSeaFoodQty" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+        <label>¿Qué tipo de bebidas usualmente consume?/ ¿Cuántos servicios al día consume?</label><br/>
+
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                    <label>Agua</label>
+                    <input ID="Text3" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Leche Entera</label>
+                    <input ID="Text4" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Jugo</label>
+                    <input ID="Text7" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Leche Baja en Grasa</label>
+                    <input ID="Text8" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Leche Sin Grasa</label>
+                    <input ID="Text9" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Refresco</label>
+                    <input ID="Text10" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Refresco de Dieta</label>
+                    <input ID="Text11" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div class="form-group">
+                    <label>Cerveza</label>
+                    <input ID="Text5" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Té</label>
+                    <input ID="Text6" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Té con azúcar</label>
+                    <input ID="Text12" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Licor</label>
+                    <input ID="Text13" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Bebidas electrolíticas</label>
+                    <input ID="Text14" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+
+                    <div class="form-group">
+                    <label>Otros</label>
+                    <input ID="Text15" runat="server" class="form-control" placeholder="Cantidad"/>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label>Razón por la que solicita servicios nutricionales:</label>
+        <textarea ID="txtReasonForService" cols="1" rows="3" runat="server" class="form-control" placeholder="Cantidad"/>
+        </div>
+
+        <br/>
+
+        <div class="form-group pull-right">
+            <asp:LinkButton ID="lbSave" runat="server" onclick="lbSave_Click" CssClass="btn btn-primary">Actualizar</asp:LinkButton>
+            <asp:LinkButton ID="lbCancel" runat="server" CssClass="btn btn-default" OnClick="lbCancel_Click">Cancel</asp:LinkButton>
+        </div>
+
+        <br/>
+
+    </div>
+
+</form>
 
 </asp:Content>

@@ -1,54 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="NutritionDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="NutritionDBModelStoreContainer">
-    <EntitySet Name="Blogs" EntityType="NutritionDBModel.Store.Blogs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Initial_Assessment" EntityType="NutritionDBModel.Store.Initial_Assessment" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="LabData" EntityType="NutritionDBModel.Store.LabData" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ListZip" EntityType="NutritionDBModel.Store.ListZip" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Messages" EntityType="NutritionDBModel.Store.Messages" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Patient_Record_Assessment" EntityType="NutritionDBModel.Store.Patient_Record_Assessment" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PatientDailyMenu" EntityType="NutritionDBModel.Store.PatientDailyMenu" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Patients" EntityType="NutritionDBModel.Store.Patients" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Roles" EntityType="NutritionDBModel.Store.Roles" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="NutritionDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserAccounts" EntityType="NutritionDBModel.Store.UserAccounts" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Messages_UserAccounts" Association="NutritionDBModel.Store.FK_Messages_UserAccounts">
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-      <End Role="Messages" EntitySet="Messages" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Messages_UserAccounts1" Association="NutritionDBModel.Store.FK_Messages_UserAccounts1">
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-      <End Role="Messages" EntitySet="Messages" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Patient_Record_Assessment_Patients" Association="NutritionDBModel.Store.FK_Patient_Record_Assessment_Patients">
-      <End Role="Patients" EntitySet="Patients" />
-      <End Role="Patient_Record_Assessment" EntitySet="Patient_Record_Assessment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserAccounts_Patients" Association="NutritionDBModel.Store.FK_UserAccounts_Patients">
-      <End Role="Patients" EntitySet="Patients" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserAccounts_Roles" Association="NutritionDBModel.Store.FK_UserAccounts_Roles">
-      <End Role="Roles" EntitySet="Roles" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-    </AssociationSet>
-  </EntityContainer>
+<Schema Namespace="NutritionDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointment_Locations">
+    <Key>
+      <PropertyRef Name="Appointment_Location_ID" />
+    </Key>
+    <Property Name="Appointment_Location_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Appointment_Location_Description" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Appointments_Master">
+    <Key>
+      <PropertyRef Name="Appointment_Request_ID" />
+    </Key>
+    <Property Name="Appointment_Request_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Patient_ID" Type="int" />
+    <Property Name="Dietitian_ID" Type="int" />
+    <Property Name="Requested_DateTime" Type="datetime" />
+    <Property Name="Request_Comments" Type="varchar" MaxLength="100" />
+    <Property Name="Request_Location" Type="int" />
+    <Property Name="Request_Status" Type="int" />
+  </EntityType>
   <EntityType Name="Blogs">
     <Key>
       <PropertyRef Name="Blog_ID" />
     </Key>
-    <Property Name="Blog_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Blog_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Blog_Title" Type="varchar" MaxLength="100" />
     <Property Name="Blog_Date" Type="datetime" />
     <Property Name="Blog_Author" Type="varchar" MaxLength="50" />
     <Property Name="Blog_Body" Type="text" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <EntityType Name="Dietitians">
+    <Key>
+      <PropertyRef Name="Dietian_ID" />
+    </Key>
+    <Property Name="Dietian_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="NPI" Type="varchar" MaxLength="15" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="HourSlots">
+    <Key>
+      <PropertyRef Name="HourSlotTime" />
+    </Key>
+    <Property Name="HourSlotTime" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="HourSlotOrder" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="Initial_Assessment">
     <Key>
       <PropertyRef Name="Initial_Assessment_ID" />
     </Key>
-    <Property Name="Initial_Assessment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Initial_Assessment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Problems" Type="varchar" MaxLength="255" />
     <Property Name="Apetite" Type="varchar" MaxLength="15" />
     <Property Name="Nausea" Type="bit" />
@@ -72,7 +76,7 @@
     <Property Name="ABW" Type="int" />
     <Property Name="UBW" Type="int" />
     <Property Name="IBW" Type="int" />
-    <Property Name="BMI" Type="decimal" Scale="1" />
+    <Property Name="BMI" Type="decimal" Precision="18" Scale="1" />
     <Property Name="UBWP" Type="int" />
     <Property Name="IBWP" Type="int" />
     <Property Name="TasteAndPreferences" Type="text" />
@@ -81,26 +85,26 @@
     <Key>
       <PropertyRef Name="LabData_ID" />
     </Key>
-    <Property Name="LabData_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LabData_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Patient_ID" Type="int" />
-    <Property Name="Hemoglobin" Type="decimal" Scale="1" />
-    <Property Name="HematocritP" Type="decimal" Scale="1" />
-    <Property Name="MCV" Type="decimal" Scale="1" />
-    <Property Name="MCHC" Type="decimal" Scale="1" />
-    <Property Name="TLC" Type="decimal" Scale="1" />
-    <Property Name="Glucose" Type="decimal" Scale="1" />
-    <Property Name="BUN" Type="decimal" Scale="1" />
-    <Property Name="Creatinine" Type="decimal" Scale="1" />
-    <Property Name="ProteinTotal" Type="decimal" Scale="1" />
-    <Property Name="Albumin" Type="decimal" Scale="1" />
-    <Property Name="ColesterolTotal" Type="decimal" Scale="1" />
-    <Property Name="ColesterolLDL" Type="decimal" Scale="1" />
-    <Property Name="ColesterolHDL" Type="decimal" Scale="1" />
-    <Property Name="Triglicerides" Type="decimal" Scale="1" />
-    <Property Name="Sodium" Type="decimal" Scale="1" />
-    <Property Name="AST" Type="decimal" Scale="1" />
-    <Property Name="ALT" Type="decimal" Scale="1" />
-    <Property Name="ALKP" Type="decimal" Scale="1" />
+    <Property Name="Hemoglobin" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="HematocritP" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="MCV" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="MCHC" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="TLC" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="Glucose" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="BUN" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="Creatinine" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ProteinTotal" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="Albumin" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolTotal" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolLDL" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolHDL" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="Triglicerides" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="Sodium" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="AST" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ALT" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ALKP" Type="decimal" Precision="18" Scale="1" />
     <Property Name="Other" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ListZip">
@@ -108,7 +112,7 @@
       <PropertyRef Name="ZipUid" />
     </Key>
     <Property Name="ZipUid" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="ZipCode" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ZipCode" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="City" Type="varchar" MaxLength="25" />
     <Property Name="State" Type="varchar" MaxLength="3" />
     <Property Name="AreaCode" Type="varchar" MaxLength="4" />
@@ -118,7 +122,7 @@
     <Key>
       <PropertyRef Name="Message_ID" />
     </Key>
-    <Property Name="Message_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Message_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Message_Date" Type="datetime" />
     <Property Name="Message_Body" Type="text" />
     <Property Name="Posted_By" Type="int" />
@@ -128,7 +132,7 @@
     <Key>
       <PropertyRef Name="Patient_Record_Assessment_ID" />
     </Key>
-    <Property Name="Patient_Record_Assessment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_Record_Assessment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Patient_ID" Type="int" />
     <Property Name="Hx_Anemia" Type="bit" />
     <Property Name="Hx_Cancer" Type="bit" />
@@ -239,7 +243,7 @@
     <Key>
       <PropertyRef Name="Patient_ID" />
     </Key>
-    <Property Name="Patient_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Full_Name" Type="varchar" MaxLength="50" />
     <Property Name="Record_Date" Type="datetime" />
     <Property Name="Birthday" Type="datetime" />
@@ -262,16 +266,16 @@
     <Key>
       <PropertyRef Name="Role_ID" />
     </Key>
-    <Property Name="Role_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Role_ID" Type="int" Nullable="false" />
     <Property Name="Role_Description" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
@@ -279,16 +283,55 @@
     <Key>
       <PropertyRef Name="UserAccount_ID" />
     </Key>
-    <Property Name="UserAccount_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserAccount_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="50" />
     <Property Name="UserPassword" Type="varchar" MaxLength="50" />
     <Property Name="Patient_ID" Type="int" />
     <Property Name="Role_ID" Type="int" />
     <Property Name="IsActive" Type="int" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'NutritionDB.dbo.v_UserAccounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_UserAccounts">
+    <Key>
+      <PropertyRef Name="UserAccount_ID" />
+    </Key>
+    <Property Name="UserAccount_ID" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="50" />
+    <Property Name="Patient_ID" Type="int" />
+    <Property Name="Role_ID" Type="int" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="Role_Description" Type="varchar" MaxLength="15" />
+    <Property Name="Full_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Appointments_Master_Appointment_Locations">
+    <End Role="Appointment_Locations" Type="Self.Appointment_Locations" Multiplicity="0..1" />
+    <End Role="Appointments_Master" Type="Self.Appointments_Master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment_Locations">
+        <PropertyRef Name="Appointment_Location_ID" />
+      </Principal>
+      <Dependent Role="Appointments_Master">
+        <PropertyRef Name="Request_Location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Master_Dietitians">
+    <End Role="Dietitians" Type="Self.Dietitians" Multiplicity="0..1" />
+    <End Role="Appointments_Master" Type="Self.Appointments_Master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dietitians">
+        <PropertyRef Name="Dietian_ID" />
+      </Principal>
+      <Dependent Role="Appointments_Master">
+        <PropertyRef Name="Dietitian_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Messages_UserAccounts">
-    <End Role="UserAccounts" Type="NutritionDBModel.Store.UserAccounts" Multiplicity="0..1" />
-    <End Role="Messages" Type="NutritionDBModel.Store.Messages" Multiplicity="*" />
+    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserAccounts">
         <PropertyRef Name="UserAccount_ID" />
@@ -299,8 +342,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Messages_UserAccounts1">
-    <End Role="UserAccounts" Type="NutritionDBModel.Store.UserAccounts" Multiplicity="0..1" />
-    <End Role="Messages" Type="NutritionDBModel.Store.Messages" Multiplicity="*" />
+    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserAccounts">
         <PropertyRef Name="UserAccount_ID" />
@@ -311,8 +354,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Patient_Record_Assessment_Patients">
-    <End Role="Patients" Type="NutritionDBModel.Store.Patients" Multiplicity="0..1" />
-    <End Role="Patient_Record_Assessment" Type="NutritionDBModel.Store.Patient_Record_Assessment" Multiplicity="*" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="Patient_Record_Assessment" Type="Self.Patient_Record_Assessment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Patients">
         <PropertyRef Name="Patient_ID" />
@@ -323,8 +366,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserAccounts_Patients">
-    <End Role="Patients" Type="NutritionDBModel.Store.Patients" Multiplicity="0..1" />
-    <End Role="UserAccounts" Type="NutritionDBModel.Store.UserAccounts" Multiplicity="*" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Patients">
         <PropertyRef Name="Patient_ID" />
@@ -335,8 +380,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserAccounts_Roles">
-    <End Role="Roles" Type="NutritionDBModel.Store.Roles" Multiplicity="0..1" />
-    <End Role="UserAccounts" Type="NutritionDBModel.Store.UserAccounts" Multiplicity="*" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Roles">
         <PropertyRef Name="Role_ID" />
@@ -346,4 +391,61 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="NutritionDBModelStoreContainer">
+    <EntitySet Name="Appointment_Locations" EntityType="Self.Appointment_Locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointments_Master" EntityType="Self.Appointments_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blogs" EntityType="Self.Blogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dietitians" EntityType="Self.Dietitians" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HourSlots" EntityType="Self.HourSlots" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Initial_Assessment" EntityType="Self.Initial_Assessment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LabData" EntityType="Self.LabData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListZip" EntityType="Self.ListZip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient_Record_Assessment" EntityType="Self.Patient_Record_Assessment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientDailyMenu" EntityType="Self.PatientDailyMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_UserAccounts" EntityType="Self.v_UserAccounts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_UserAccounts].[UserAccount_ID] AS [UserAccount_ID], 
+    [v_UserAccounts].[Username] AS [Username], 
+    [v_UserAccounts].[UserPassword] AS [UserPassword], 
+    [v_UserAccounts].[Patient_ID] AS [Patient_ID], 
+    [v_UserAccounts].[Role_ID] AS [Role_ID], 
+    [v_UserAccounts].[IsActive] AS [IsActive], 
+    [v_UserAccounts].[Role_Description] AS [Role_Description], 
+    [v_UserAccounts].[Full_Name] AS [Full_Name]
+    FROM [dbo].[v_UserAccounts] AS [v_UserAccounts]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Appointments_Master_Appointment_Locations" Association="Self.FK_Appointments_Master_Appointment_Locations">
+      <End Role="Appointment_Locations" EntitySet="Appointment_Locations" />
+      <End Role="Appointments_Master" EntitySet="Appointments_Master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Master_Dietitians" Association="Self.FK_Appointments_Master_Dietitians">
+      <End Role="Dietitians" EntitySet="Dietitians" />
+      <End Role="Appointments_Master" EntitySet="Appointments_Master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_UserAccounts" Association="Self.FK_Messages_UserAccounts">
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_UserAccounts1" Association="Self.FK_Messages_UserAccounts1">
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Record_Assessment_Patients" Association="Self.FK_Patient_Record_Assessment_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Patient_Record_Assessment" EntitySet="Patient_Record_Assessment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccounts_Patients" Association="Self.FK_UserAccounts_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccounts_Roles" Association="Self.FK_UserAccounts_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

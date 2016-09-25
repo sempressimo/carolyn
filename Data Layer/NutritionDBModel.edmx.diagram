@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca630fcb8e70429c85775e908f815445" Name="Diagram1">
+        <EntityTypeShape EntityType="NutritionDBModel.Appointment_Locations" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Appointments_Master" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Blog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Dietitian" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.HourSlot" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Initial_Assessment" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.LabData" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.ListZip" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Message" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Patient_Record_Assessment" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.PatientDailyMenu" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Patient" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.Role" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.sysdiagram" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.UserAccount" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NutritionDBModel.v_UserAccounts" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="NutritionDBModel.FK_Appointments_Master_Appointment_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_Appointments_Master_Dietitians" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_Messages_UserAccounts" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_Messages_UserAccounts1" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_Patient_Record_Assessment_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_UserAccounts_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="NutritionDBModel.FK_UserAccounts_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

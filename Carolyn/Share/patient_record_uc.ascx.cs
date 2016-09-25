@@ -1,16 +1,16 @@
-﻿using Data_Layer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Service_Layer;
 
 namespace Carolyn.Share
 {
     public partial class patient_record_uc : System.Web.UI.UserControl
     {
-        NutritionDBEntities db = new NutritionDBEntities();
+        PatientFacade pf = new PatientFacade();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace Carolyn.Share
 
         private void LoadRecord(int Key)
         {
-            Patient p = this.db.Patients.Single(k => k.Patient_ID == Key);
+            Patient p = this.pf.Load();
 
             this.txtAge.Value = p.Age.ToString();
             this.txtBirthdate.Value = p.Birthday.Value.ToShortDateString();
@@ -61,6 +61,7 @@ namespace Carolyn.Share
 
         protected void AddRecord()
         {
+            /*
             Patient p = new Patient();
 
             p.Age = Convert.ToInt32(this.txtAge.Value);
@@ -83,10 +84,12 @@ namespace Carolyn.Share
 
             db.Patients.Add(p);
             db.SaveChanges();
+            */
         }
 
         protected void SaveRecord(int Patient_ID)
         {
+            /*
             Patient p = this.db.Patients.Single(k => k.Patient_ID == Patient_ID);
 
             p.Age = Convert.ToInt32(this.txtAge.Value);
@@ -108,6 +111,7 @@ namespace Carolyn.Share
             p.Work_Phone = this.txtWorkPhone.Value;
 
             this.db.SaveChanges();
+            */
         }
 
         protected void lbSave_Click(object sender, EventArgs e)
@@ -152,12 +156,14 @@ namespace Carolyn.Share
         {
             try
             {
+                /*
                 ListZip lz = db.ListZips.SingleOrDefault(p => p.ZipCode == this.txtZipcode.Value);
 
                 if (lz != null)
                 {
                     this.txtTown.Value = lz.City;
                 }
+                */
             }
             catch (Exception E)
             {

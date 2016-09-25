@@ -9,3 +9,15 @@ C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\bin\C
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.csprojResolveAssemblyReference.cache
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.dll
 C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\Carolyn\Carolyn\obj\Debug\Carolyn.pdb
+C:\git\carolyn\Carolyn\bin\Carolyn.dll.config
+C:\git\carolyn\Carolyn\bin\Carolyn.dll
+C:\git\carolyn\Carolyn\bin\Carolyn.pdb
+C:\git\carolyn\Carolyn\bin\EntityFramework.dll
+C:\git\carolyn\Carolyn\bin\EntityFramework.SqlServer.dll
+C:\git\carolyn\Carolyn\bin\EntityFramework.xml
+C:\git\carolyn\Carolyn\bin\EntityFramework.SqlServer.xml
+C:\git\carolyn\Carolyn\obj\Debug\Carolyn.dll
+C:\git\carolyn\Carolyn\obj\Debug\Carolyn.pdb
+C:\git\carolyn\Carolyn\obj\Debug\Carolyn.csprojResolveAssemblyReference.cache
+C:\git\carolyn\Carolyn\bin\Data Layer.dll
+C:\git\carolyn\Carolyn\bin\Data Layer.pdb

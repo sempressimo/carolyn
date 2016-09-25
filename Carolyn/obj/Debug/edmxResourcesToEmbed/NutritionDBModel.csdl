@@ -1,330 +1,421 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="NutritionDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="NutritionDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Blogs" EntityType="NutritionDBModel.Blogs" />
+<Schema Namespace="NutritionDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="NutritionDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointment_Locations" EntityType="NutritionDBModel.Appointment_Locations" />
+    <EntitySet Name="Appointments_Master" EntityType="NutritionDBModel.Appointments_Master" />
+    <EntitySet Name="Blogs" EntityType="NutritionDBModel.Blog" />
+    <EntitySet Name="Dietitians" EntityType="NutritionDBModel.Dietitian" />
+    <EntitySet Name="HourSlots" EntityType="NutritionDBModel.HourSlot" />
     <EntitySet Name="Initial_Assessment" EntityType="NutritionDBModel.Initial_Assessment" />
-    <EntitySet Name="LabData" EntityType="NutritionDBModel.LabData" />
-    <EntitySet Name="ListZip" EntityType="NutritionDBModel.ListZip" />
-    <EntitySet Name="Messages" EntityType="NutritionDBModel.Messages" />
+    <EntitySet Name="LabDatas" EntityType="NutritionDBModel.LabData" />
+    <EntitySet Name="ListZips" EntityType="NutritionDBModel.ListZip" />
+    <EntitySet Name="Messages" EntityType="NutritionDBModel.Message" />
     <EntitySet Name="Patient_Record_Assessment" EntityType="NutritionDBModel.Patient_Record_Assessment" />
-    <EntitySet Name="PatientDailyMenu" EntityType="NutritionDBModel.PatientDailyMenu" />
-    <EntitySet Name="Patients" EntityType="NutritionDBModel.Patients" />
-    <EntitySet Name="Roles" EntityType="NutritionDBModel.Roles" />
-    <EntitySet Name="sysdiagrams" EntityType="NutritionDBModel.sysdiagrams" />
-    <EntitySet Name="UserAccounts" EntityType="NutritionDBModel.UserAccounts" />
+    <EntitySet Name="PatientDailyMenus" EntityType="NutritionDBModel.PatientDailyMenu" />
+    <EntitySet Name="Patients" EntityType="NutritionDBModel.Patient" />
+    <EntitySet Name="Roles" EntityType="NutritionDBModel.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="NutritionDBModel.sysdiagram" />
+    <EntitySet Name="UserAccounts" EntityType="NutritionDBModel.UserAccount" />
+    <EntitySet Name="v_UserAccounts" EntityType="NutritionDBModel.v_UserAccounts" />
+    <AssociationSet Name="FK_Appointments_Master_Appointment_Locations" Association="NutritionDBModel.FK_Appointments_Master_Appointment_Locations">
+      <End Role="Appointment_Locations" EntitySet="Appointment_Locations" />
+      <End Role="Appointments_Master" EntitySet="Appointments_Master" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Master_Dietitians" Association="NutritionDBModel.FK_Appointments_Master_Dietitians">
+      <End Role="Dietitian" EntitySet="Dietitians" />
+      <End Role="Appointments_Master" EntitySet="Appointments_Master" />
+    </AssociationSet>
     <AssociationSet Name="FK_Messages_UserAccounts" Association="NutritionDBModel.FK_Messages_UserAccounts">
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-      <End Role="Messages" EntitySet="Messages" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="Message" EntitySet="Messages" />
     </AssociationSet>
     <AssociationSet Name="FK_Messages_UserAccounts1" Association="NutritionDBModel.FK_Messages_UserAccounts1">
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-      <End Role="Messages" EntitySet="Messages" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="Message" EntitySet="Messages" />
     </AssociationSet>
     <AssociationSet Name="FK_Patient_Record_Assessment_Patients" Association="NutritionDBModel.FK_Patient_Record_Assessment_Patients">
-      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Patient" EntitySet="Patients" />
       <End Role="Patient_Record_Assessment" EntitySet="Patient_Record_Assessment" />
     </AssociationSet>
     <AssociationSet Name="FK_UserAccounts_Patients" Association="NutritionDBModel.FK_UserAccounts_Patients">
-      <End Role="Patients" EntitySet="Patients" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
     </AssociationSet>
     <AssociationSet Name="FK_UserAccounts_Roles" Association="NutritionDBModel.FK_UserAccounts_Roles">
-      <End Role="Roles" EntitySet="Roles" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Blogs">
+  <EntityType Name="Appointment_Locations">
+    <Key>
+      <PropertyRef Name="Appointment_Location_ID" />
+    </Key>
+    <Property Name="Appointment_Location_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Appointment_Location_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Appointments_Master" Relationship="NutritionDBModel.FK_Appointments_Master_Appointment_Locations" FromRole="Appointment_Locations" ToRole="Appointments_Master" />
+  </EntityType>
+  <EntityType Name="Appointments_Master">
+    <Key>
+      <PropertyRef Name="Appointment_Request_ID" />
+    </Key>
+    <Property Name="Appointment_Request_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="Dietitian_ID" Type="Int32" />
+    <Property Name="Requested_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Request_Comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Request_Location" Type="Int32" />
+    <Property Name="Request_Status" Type="Int32" />
+    <NavigationProperty Name="Appointment_Locations" Relationship="NutritionDBModel.FK_Appointments_Master_Appointment_Locations" FromRole="Appointments_Master" ToRole="Appointment_Locations" />
+    <NavigationProperty Name="Dietitian" Relationship="NutritionDBModel.FK_Appointments_Master_Dietitians" FromRole="Appointments_Master" ToRole="Dietitian" />
+  </EntityType>
+  <EntityType Name="Blog">
     <Key>
       <PropertyRef Name="Blog_ID" />
     </Key>
-    <Property Type="Int32" Name="Blog_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Blog_Title" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Blog_Date" />
-    <Property Type="String" Name="Blog_Author" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Blog_Body" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsActive" />
+    <Property Name="Blog_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Blog_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Blog_Date" Type="DateTime" Precision="3" />
+    <Property Name="Blog_Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Blog_Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Dietitian">
+    <Key>
+      <PropertyRef Name="Dietian_ID" />
+    </Key>
+    <Property Name="Dietian_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NPI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Appointments_Master" Relationship="NutritionDBModel.FK_Appointments_Master_Dietitians" FromRole="Dietitian" ToRole="Appointments_Master" />
+  </EntityType>
+  <EntityType Name="HourSlot">
+    <Key>
+      <PropertyRef Name="HourSlotTime" />
+    </Key>
+    <Property Name="HourSlotTime" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="HourSlotOrder" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="Initial_Assessment">
     <Key>
       <PropertyRef Name="Initial_Assessment_ID" />
     </Key>
-    <Property Type="Int32" Name="Initial_Assessment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Problems" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Apetite" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Nausea" />
-    <Property Type="Boolean" Name="Diarrea" />
-    <Property Type="Boolean" Name="Vomit" />
-    <Property Type="Boolean" Name="Constipation" />
-    <Property Type="Boolean" Name="ChewingProblems" />
-    <Property Type="Boolean" Name="SwallowingProblems" />
-    <Property Type="Boolean" Name="ChangeInTaste" />
-    <Property Type="Boolean" Name="FoodAllergies" />
-    <Property Type="Boolean" Name="LactoseIntolerance" />
-    <Property Type="String" Name="Barriers" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="PhysicalActivity" />
-    <Property Type="String" Name="PhysicalActivity_Details" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="ChangeInWeight" />
-    <Property Type="String" Name="DrugsList" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="SupplementsList" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="CurrentDiet" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Height_Centimeters" />
-    <Property Type="String" Name="Bone_Structure" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="ABW" />
-    <Property Type="Int32" Name="UBW" />
-    <Property Type="Int32" Name="IBW" />
-    <Property Type="Decimal" Name="BMI" Precision="18" Scale="1" />
-    <Property Type="Int32" Name="UBWP" />
-    <Property Type="Int32" Name="IBWP" />
-    <Property Type="String" Name="TasteAndPreferences" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Initial_Assessment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Problems" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Apetite" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Nausea" Type="Boolean" />
+    <Property Name="Diarrea" Type="Boolean" />
+    <Property Name="Vomit" Type="Boolean" />
+    <Property Name="Constipation" Type="Boolean" />
+    <Property Name="ChewingProblems" Type="Boolean" />
+    <Property Name="SwallowingProblems" Type="Boolean" />
+    <Property Name="ChangeInTaste" Type="Boolean" />
+    <Property Name="FoodAllergies" Type="Boolean" />
+    <Property Name="LactoseIntolerance" Type="Boolean" />
+    <Property Name="Barriers" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PhysicalActivity" Type="Boolean" />
+    <Property Name="PhysicalActivity_Details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeInWeight" Type="Boolean" />
+    <Property Name="DrugsList" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SupplementsList" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentDiet" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Height_Centimeters" Type="Int32" />
+    <Property Name="Bone_Structure" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ABW" Type="Int32" />
+    <Property Name="UBW" Type="Int32" />
+    <Property Name="IBW" Type="Int32" />
+    <Property Name="BMI" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="UBWP" Type="Int32" />
+    <Property Name="IBWP" Type="Int32" />
+    <Property Name="TasteAndPreferences" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="LabData">
     <Key>
       <PropertyRef Name="LabData_ID" />
     </Key>
-    <Property Type="Int32" Name="LabData_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Patient_ID" />
-    <Property Type="Decimal" Name="Hemoglobin" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="HematocritP" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="MCV" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="MCHC" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="TLC" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="Glucose" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="BUN" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="Creatinine" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ProteinTotal" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="Albumin" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ColesterolTotal" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ColesterolLDL" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ColesterolHDL" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="Triglicerides" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="Sodium" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="AST" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ALT" Precision="18" Scale="1" />
-    <Property Type="Decimal" Name="ALKP" Precision="18" Scale="1" />
-    <Property Type="String" Name="Other" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LabData_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="Hemoglobin" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="HematocritP" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="MCV" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="MCHC" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="TLC" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Glucose" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="BUN" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Creatinine" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ProteinTotal" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Albumin" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolTotal" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolLDL" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ColesterolHDL" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Triglicerides" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Sodium" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="AST" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ALT" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ALKP" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="Other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ListZip">
     <Key>
       <PropertyRef Name="ZipUid" />
     </Key>
-    <Property Type="Guid" Name="ZipUid" Nullable="false" />
-    <Property Type="String" Name="ZipCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="City" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="State" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="AreaCode" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Inactive" Nullable="false" />
+    <Property Name="ZipUid" Type="Guid" Nullable="false" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="AreaCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
   </EntityType>
-  <EntityType Name="Messages">
+  <EntityType Name="Message">
     <Key>
       <PropertyRef Name="Message_ID" />
     </Key>
-    <Property Type="Int32" Name="Message_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="DateTime" Name="Message_Date" />
-    <Property Type="String" Name="Message_Body" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Posted_By" />
-    <Property Type="Int32" Name="Posted_To" />
-    <NavigationProperty Name="UserAccounts" Relationship="NutritionDBModel.FK_Messages_UserAccounts" FromRole="Messages" ToRole="UserAccounts" />
-    <NavigationProperty Name="UserAccounts1" Relationship="NutritionDBModel.FK_Messages_UserAccounts1" FromRole="Messages" ToRole="UserAccounts" />
+    <Property Name="Message_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message_Date" Type="DateTime" Precision="3" />
+    <Property Name="Message_Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Posted_By" Type="Int32" />
+    <Property Name="Posted_To" Type="Int32" />
+    <NavigationProperty Name="UserAccount" Relationship="NutritionDBModel.FK_Messages_UserAccounts" FromRole="Message" ToRole="UserAccount" />
+    <NavigationProperty Name="UserAccount1" Relationship="NutritionDBModel.FK_Messages_UserAccounts1" FromRole="Message" ToRole="UserAccount" />
   </EntityType>
   <EntityType Name="Patient_Record_Assessment">
     <Key>
       <PropertyRef Name="Patient_Record_Assessment_ID" />
     </Key>
-    <Property Type="Int32" Name="Patient_Record_Assessment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="Patient_ID" />
-    <Property Type="Boolean" Name="Hx_Anemia" />
-    <Property Type="Boolean" Name="Hx_Cancer" />
-    <Property Type="String" Name="Hx_Cancer_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Hx_Anorexia" />
-    <Property Type="Boolean" Name="Hx_Cardiovascular" />
-    <Property Type="String" Name="Hx_Cardiovascular_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Hx_Bulimia" />
-    <Property Type="Boolean" Name="Hx_Gastro" />
-    <Property Type="String" Name="Hx_Gastro_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Hx_Artritis" />
-    <Property Type="Boolean" Name="Hx_Renal" />
-    <Property Type="String" Name="Hx_Renal_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Hx_Depresion" />
-    <Property Type="Boolean" Name="Hx_Hipoglucemia" />
-    <Property Type="Boolean" Name="Hx_Diabetes" />
-    <Property Type="Boolean" Name="Hx_Hipotension" />
-    <Property Type="Boolean" Name="Hx_Epilepsia" />
-    <Property Type="Boolean" Name="Hx_Mareos" />
-    <Property Type="Boolean" Name="Hx_Higado" />
-    <Property Type="Boolean" Name="Hx_Migrane" />
-    <Property Type="Boolean" Name="Hx_Hipercolesterolemia" />
-    <Property Type="Boolean" Name="Hx_Tiroide" />
-    <Property Type="Boolean" Name="Hx_Hiperlipidemia" />
-    <Property Type="Boolean" Name="Hx_Vertigo" />
-    <Property Type="Boolean" Name="Hx_Hipertension" />
-    <Property Type="Boolean" Name="Hx_Other" />
-    <Property Type="String" Name="Hx_Other_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Cirujias_1" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Cirujias_1_Date" />
-    <Property Type="String" Name="Cirujias_2" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Cirujias_2_Date" />
-    <Property Type="String" Name="Cirujias_3" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Cirujias_3_Date" />
-    <Property Type="String" Name="Drug_List" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Supplements_List" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Alergic_To_Drugs" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Allergic_To_Food" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Anemia" />
-    <Property Type="Boolean" Name="Fx_Gastro" />
-    <Property Type="String" Name="Fx_Gastro_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Anorexia" />
-    <Property Type="Boolean" Name="Fx_Renal" />
-    <Property Type="String" Name="Fx_Renal_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Bulimia" />
-    <Property Type="Boolean" Name="Fx_Respiratory" />
-    <Property Type="String" Name="Fx_Respiratory_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Artritis" />
-    <Property Type="Boolean" Name="Fx_Depresion" />
-    <Property Type="Boolean" Name="Fx_Cancer" />
-    <Property Type="String" Name="Fx_Cancer_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Epilepsia" />
-    <Property Type="Boolean" Name="Fx_Cardiovascular" />
-    <Property Type="String" Name="Fx_Cardiovascular_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="Fx_Higado" />
-    <Property Type="Boolean" Name="Fx_Hipercolesterolemimia" />
-    <Property Type="Boolean" Name="Fx_Mareos" />
-    <Property Type="Boolean" Name="Fx_Hiperlipidemias" />
-    <Property Type="Boolean" Name="Fx_Migrane" />
-    <Property Type="Boolean" Name="Fx_Hipertension" />
-    <Property Type="Boolean" Name="Fx_Tiroide" />
-    <Property Type="Boolean" Name="Fx_Hipoglucemia" />
-    <Property Type="Boolean" Name="Fx_Vertigo" />
-    <Property Type="Boolean" Name="Fx_Hipotension" />
-    <Property Type="Boolean" Name="Fx_Other" />
-    <Property Type="String" Name="Fx_Other_Description" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Meals_Per_Day" />
-    <Property Type="Int32" Name="Snacks_Per_Day" />
-    <Property Type="Int32" Name="Eat_Outside_Breakfast_Count" />
-    <Property Type="Int32" Name="Eat_Outside_Lunch_Count" />
-    <Property Type="Int32" Name="Eat_Outside_Dinner_Count" />
-    <Property Type="Int32" Name="Eat_Outside_Place" />
-    <Property Type="String" Name="Eat_Outside_Place_Other" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Fruits_Per_Day" />
-    <Property Type="Int32" Name="Fruit_Juice_Per_Day" />
-    <Property Type="Int32" Name="Vegetables_Per_Day" />
-    <Property Type="Int32" Name="Poultry_Per_Day" />
-    <Property Type="Int32" Name="Fish_Per_Day" />
-    <Property Type="Int32" Name="Red_Meat_Per_Day" />
-    <Property Type="Int32" Name="Seafood_Per_Day" />
-    <Property Type="Int32" Name="Water_Per_Day" />
-    <Property Type="Int32" Name="Milk_Whole_Per_Day" />
-    <Property Type="Int32" Name="Milk_Low_Fat_Per_Day" />
-    <Property Type="Int32" Name="Juice_Per_Day" />
-    <Property Type="Int32" Name="Milk_No_Fat_Per_Day" />
-    <Property Type="Int32" Name="Soda_Per_Day" />
-    <Property Type="Int32" Name="Diet_Soda_Per_Day" />
-    <Property Type="Int32" Name="Beer_Per_Day" />
-    <Property Type="Int32" Name="Tea_Per_Day" />
-    <Property Type="Int32" Name="Wine_Per_Day" />
-    <Property Type="Int32" Name="Tea_Sugar_Per_Day" />
-    <Property Type="Int32" Name="Licor_Per_Day" />
-    <Property Type="Int32" Name="Power_Drinks_Per_Day" />
-    <Property Type="String" Name="Reason_For_Service" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Patients" Relationship="NutritionDBModel.FK_Patient_Record_Assessment_Patients" FromRole="Patient_Record_Assessment" ToRole="Patients" />
+    <Property Name="Patient_Record_Assessment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="Hx_Anemia" Type="Boolean" />
+    <Property Name="Hx_Cancer" Type="Boolean" />
+    <Property Name="Hx_Cancer_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hx_Anorexia" Type="Boolean" />
+    <Property Name="Hx_Cardiovascular" Type="Boolean" />
+    <Property Name="Hx_Cardiovascular_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hx_Bulimia" Type="Boolean" />
+    <Property Name="Hx_Gastro" Type="Boolean" />
+    <Property Name="Hx_Gastro_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hx_Artritis" Type="Boolean" />
+    <Property Name="Hx_Renal" Type="Boolean" />
+    <Property Name="Hx_Renal_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hx_Depresion" Type="Boolean" />
+    <Property Name="Hx_Hipoglucemia" Type="Boolean" />
+    <Property Name="Hx_Diabetes" Type="Boolean" />
+    <Property Name="Hx_Hipotension" Type="Boolean" />
+    <Property Name="Hx_Epilepsia" Type="Boolean" />
+    <Property Name="Hx_Mareos" Type="Boolean" />
+    <Property Name="Hx_Higado" Type="Boolean" />
+    <Property Name="Hx_Migrane" Type="Boolean" />
+    <Property Name="Hx_Hipercolesterolemia" Type="Boolean" />
+    <Property Name="Hx_Tiroide" Type="Boolean" />
+    <Property Name="Hx_Hiperlipidemia" Type="Boolean" />
+    <Property Name="Hx_Vertigo" Type="Boolean" />
+    <Property Name="Hx_Hipertension" Type="Boolean" />
+    <Property Name="Hx_Other" Type="Boolean" />
+    <Property Name="Hx_Other_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cirujias_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cirujias_1_Date" Type="DateTime" Precision="3" />
+    <Property Name="Cirujias_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cirujias_2_Date" Type="DateTime" Precision="3" />
+    <Property Name="Cirujias_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cirujias_3_Date" Type="DateTime" Precision="3" />
+    <Property Name="Drug_List" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Supplements_List" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Alergic_To_Drugs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Allergic_To_Food" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Anemia" Type="Boolean" />
+    <Property Name="Fx_Gastro" Type="Boolean" />
+    <Property Name="Fx_Gastro_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Anorexia" Type="Boolean" />
+    <Property Name="Fx_Renal" Type="Boolean" />
+    <Property Name="Fx_Renal_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Bulimia" Type="Boolean" />
+    <Property Name="Fx_Respiratory" Type="Boolean" />
+    <Property Name="Fx_Respiratory_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Artritis" Type="Boolean" />
+    <Property Name="Fx_Depresion" Type="Boolean" />
+    <Property Name="Fx_Cancer" Type="Boolean" />
+    <Property Name="Fx_Cancer_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Epilepsia" Type="Boolean" />
+    <Property Name="Fx_Cardiovascular" Type="Boolean" />
+    <Property Name="Fx_Cardiovascular_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fx_Higado" Type="Boolean" />
+    <Property Name="Fx_Hipercolesterolemimia" Type="Boolean" />
+    <Property Name="Fx_Mareos" Type="Boolean" />
+    <Property Name="Fx_Hiperlipidemias" Type="Boolean" />
+    <Property Name="Fx_Migrane" Type="Boolean" />
+    <Property Name="Fx_Hipertension" Type="Boolean" />
+    <Property Name="Fx_Tiroide" Type="Boolean" />
+    <Property Name="Fx_Hipoglucemia" Type="Boolean" />
+    <Property Name="Fx_Vertigo" Type="Boolean" />
+    <Property Name="Fx_Hipotension" Type="Boolean" />
+    <Property Name="Fx_Other" Type="Boolean" />
+    <Property Name="Fx_Other_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Meals_Per_Day" Type="Int32" />
+    <Property Name="Snacks_Per_Day" Type="Int32" />
+    <Property Name="Eat_Outside_Breakfast_Count" Type="Int32" />
+    <Property Name="Eat_Outside_Lunch_Count" Type="Int32" />
+    <Property Name="Eat_Outside_Dinner_Count" Type="Int32" />
+    <Property Name="Eat_Outside_Place" Type="Int32" />
+    <Property Name="Eat_Outside_Place_Other" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fruits_Per_Day" Type="Int32" />
+    <Property Name="Fruit_Juice_Per_Day" Type="Int32" />
+    <Property Name="Vegetables_Per_Day" Type="Int32" />
+    <Property Name="Poultry_Per_Day" Type="Int32" />
+    <Property Name="Fish_Per_Day" Type="Int32" />
+    <Property Name="Red_Meat_Per_Day" Type="Int32" />
+    <Property Name="Seafood_Per_Day" Type="Int32" />
+    <Property Name="Water_Per_Day" Type="Int32" />
+    <Property Name="Milk_Whole_Per_Day" Type="Int32" />
+    <Property Name="Milk_Low_Fat_Per_Day" Type="Int32" />
+    <Property Name="Juice_Per_Day" Type="Int32" />
+    <Property Name="Milk_No_Fat_Per_Day" Type="Int32" />
+    <Property Name="Soda_Per_Day" Type="Int32" />
+    <Property Name="Diet_Soda_Per_Day" Type="Int32" />
+    <Property Name="Beer_Per_Day" Type="Int32" />
+    <Property Name="Tea_Per_Day" Type="Int32" />
+    <Property Name="Wine_Per_Day" Type="Int32" />
+    <Property Name="Tea_Sugar_Per_Day" Type="Int32" />
+    <Property Name="Licor_Per_Day" Type="Int32" />
+    <Property Name="Power_Drinks_Per_Day" Type="Int32" />
+    <Property Name="Reason_For_Service" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Patient" Relationship="NutritionDBModel.FK_Patient_Record_Assessment_Patients" FromRole="Patient_Record_Assessment" ToRole="Patient" />
   </EntityType>
   <EntityType Name="PatientDailyMenu">
     <Key>
       <PropertyRef Name="DailyMenu_ID" />
     </Key>
-    <Property Type="Int32" Name="DailyMenu_ID" Nullable="false" />
-    <Property Type="Int32" Name="Patient_ID" />
-    <Property Type="DateTime" Name="DailyMenuEntryDate" />
-    <Property Type="Int32" Name="Portion" />
-    <Property Type="String" Name="Food" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="CategoryGroup" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DailyMenu_ID" Type="Int32" Nullable="false" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="DailyMenuEntryDate" Type="DateTime" Precision="3" />
+    <Property Name="Portion" Type="Int32" />
+    <Property Name="Food" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryGroup" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Patients">
+  <EntityType Name="Patient">
     <Key>
       <PropertyRef Name="Patient_ID" />
     </Key>
-    <Property Type="Int32" Name="Patient_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Full_Name" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="Record_Date" />
-    <Property Type="DateTime" Name="Birthday" />
-    <Property Type="Int32" Name="Age" />
-    <Property Type="String" Name="Sex" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Res_Address_Line_1" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Res_Address_Line_2" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Res_Town" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Res_ZipCode" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Main_Phone" MaxLength="16" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Other_Phone" MaxLength="16" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Job" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Work_Phone" MaxLength="16" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Emergency_Contact" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Emergency_Contact_Relationship" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Emergency_Contact_Phone" MaxLength="15" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Patient_Record_Assessment" Relationship="NutritionDBModel.FK_Patient_Record_Assessment_Patients" FromRole="Patients" ToRole="Patient_Record_Assessment" />
-    <NavigationProperty Name="UserAccounts" Relationship="NutritionDBModel.FK_UserAccounts_Patients" FromRole="Patients" ToRole="UserAccounts" />
+    <Property Name="Patient_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Record_Date" Type="DateTime" Precision="3" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Res_Address_Line_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Res_Address_Line_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Res_Town" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Res_ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Main_Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Other_Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Work_Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Emergency_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emergency_Contact_Relationship" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Emergency_Contact_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Patient_Record_Assessment" Relationship="NutritionDBModel.FK_Patient_Record_Assessment_Patients" FromRole="Patient" ToRole="Patient_Record_Assessment" />
+    <NavigationProperty Name="UserAccounts" Relationship="NutritionDBModel.FK_UserAccounts_Patients" FromRole="Patient" ToRole="UserAccount" />
   </EntityType>
-  <EntityType Name="Roles">
+  <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Role_ID" />
     </Key>
-    <Property Type="Int32" Name="Role_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Role_Description" MaxLength="15" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="UserAccounts" Relationship="NutritionDBModel.FK_UserAccounts_Roles" FromRole="Roles" ToRole="UserAccounts" />
+    <Property Name="Role_ID" Type="Int32" Nullable="false" />
+    <Property Name="Role_Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserAccounts" Relationship="NutritionDBModel.FK_UserAccounts_Roles" FromRole="Role" ToRole="UserAccount" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="principal_id" Nullable="false" />
-    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="Int32" Name="version" />
-    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="UserAccounts">
+  <EntityType Name="UserAccount">
     <Key>
       <PropertyRef Name="UserAccount_ID" />
     </Key>
-    <Property Type="Int32" Name="UserAccount_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Username" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="UserPassword" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="Patient_ID" />
-    <Property Type="Int32" Name="Role_ID" />
-    <Property Type="Int32" Name="IsActive" />
-    <NavigationProperty Name="Messages" Relationship="NutritionDBModel.FK_Messages_UserAccounts" FromRole="UserAccounts" ToRole="Messages" />
-    <NavigationProperty Name="Messages1" Relationship="NutritionDBModel.FK_Messages_UserAccounts1" FromRole="UserAccounts" ToRole="Messages" />
-    <NavigationProperty Name="Patients" Relationship="NutritionDBModel.FK_UserAccounts_Patients" FromRole="UserAccounts" ToRole="Patients" />
-    <NavigationProperty Name="Roles" Relationship="NutritionDBModel.FK_UserAccounts_Roles" FromRole="UserAccounts" ToRole="Roles" />
+    <Property Name="UserAccount_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="Role_ID" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <NavigationProperty Name="Messages" Relationship="NutritionDBModel.FK_Messages_UserAccounts" FromRole="UserAccount" ToRole="Message" />
+    <NavigationProperty Name="Messages1" Relationship="NutritionDBModel.FK_Messages_UserAccounts1" FromRole="UserAccount" ToRole="Message" />
+    <NavigationProperty Name="Patient" Relationship="NutritionDBModel.FK_UserAccounts_Patients" FromRole="UserAccount" ToRole="Patient" />
+    <NavigationProperty Name="Role" Relationship="NutritionDBModel.FK_UserAccounts_Roles" FromRole="UserAccount" ToRole="Role" />
   </EntityType>
-  <Association Name="FK_Messages_UserAccounts">
-    <End Type="NutritionDBModel.UserAccounts" Role="UserAccounts" Multiplicity="0..1" />
-    <End Type="NutritionDBModel.Messages" Role="Messages" Multiplicity="*" />
+  <EntityType Name="v_UserAccounts">
+    <Key>
+      <PropertyRef Name="UserAccount_ID" />
+    </Key>
+    <Property Name="UserAccount_ID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Patient_ID" Type="Int32" />
+    <Property Name="Role_ID" Type="Int32" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="Role_Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Appointments_Master_Appointment_Locations">
+    <End Type="NutritionDBModel.Appointment_Locations" Role="Appointment_Locations" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.Appointments_Master" Role="Appointments_Master" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="UserAccounts">
+      <Principal Role="Appointment_Locations">
+        <PropertyRef Name="Appointment_Location_ID" />
+      </Principal>
+      <Dependent Role="Appointments_Master">
+        <PropertyRef Name="Request_Location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Master_Dietitians">
+    <End Type="NutritionDBModel.Dietitian" Role="Dietitian" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.Appointments_Master" Role="Appointments_Master" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dietitian">
+        <PropertyRef Name="Dietian_ID" />
+      </Principal>
+      <Dependent Role="Appointments_Master">
+        <PropertyRef Name="Dietitian_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_UserAccounts">
+    <End Type="NutritionDBModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
         <PropertyRef Name="UserAccount_ID" />
       </Principal>
-      <Dependent Role="Messages">
+      <Dependent Role="Message">
         <PropertyRef Name="Posted_By" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Messages_UserAccounts1">
-    <End Type="NutritionDBModel.UserAccounts" Role="UserAccounts" Multiplicity="0..1" />
-    <End Type="NutritionDBModel.Messages" Role="Messages" Multiplicity="*" />
+    <End Type="NutritionDBModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.Message" Role="Message" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="UserAccounts">
+      <Principal Role="UserAccount">
         <PropertyRef Name="UserAccount_ID" />
       </Principal>
-      <Dependent Role="Messages">
+      <Dependent Role="Message">
         <PropertyRef Name="Posted_To" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Patient_Record_Assessment_Patients">
-    <End Type="NutritionDBModel.Patients" Role="Patients" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.Patient" Role="Patient" Multiplicity="0..1" />
     <End Type="NutritionDBModel.Patient_Record_Assessment" Role="Patient_Record_Assessment" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Patients">
+      <Principal Role="Patient">
         <PropertyRef Name="Patient_ID" />
       </Principal>
       <Dependent Role="Patient_Record_Assessment">
@@ -333,25 +424,27 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserAccounts_Patients">
-    <End Type="NutritionDBModel.Patients" Role="Patients" Multiplicity="0..1" />
-    <End Type="NutritionDBModel.UserAccounts" Role="UserAccounts" Multiplicity="*" />
+    <End Type="NutritionDBModel.Patient" Role="Patient" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="NutritionDBModel.UserAccount" Role="UserAccount" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Patients">
+      <Principal Role="Patient">
         <PropertyRef Name="Patient_ID" />
       </Principal>
-      <Dependent Role="UserAccounts">
+      <Dependent Role="UserAccount">
         <PropertyRef Name="Patient_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserAccounts_Roles">
-    <End Type="NutritionDBModel.Roles" Role="Roles" Multiplicity="0..1" />
-    <End Type="NutritionDBModel.UserAccounts" Role="UserAccounts" Multiplicity="*" />
+    <End Type="NutritionDBModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="NutritionDBModel.UserAccount" Role="UserAccount" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Roles">
+      <Principal Role="Role">
         <PropertyRef Name="Role_ID" />
       </Principal>
-      <Dependent Role="UserAccounts">
+      <Dependent Role="UserAccount">
         <PropertyRef Name="Role_ID" />
       </Dependent>
     </ReferentialConstraint>
